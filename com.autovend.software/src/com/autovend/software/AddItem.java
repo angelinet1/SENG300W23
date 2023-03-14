@@ -1,10 +1,13 @@
 package com.autovend.software;
 
+import com.autovend.Barcode;
+import com.autovend.SellableUnit;
 import com.autovend.products.Product;
 
 public abstract class AddItem {
 	
-	Bill currentBill = new Bill();
+	static Bill currentBill;
+
 
 	public static void addItem(Product p) {
 		
@@ -12,11 +15,26 @@ public abstract class AddItem {
 		
 		
 		
-		//Assuming it is avalible
+		//Assuming it is available
 		
+		if(currentBill == null) {
+			currentBill = new Bill(p);
+		} else {
+			currentBill.addProduct(p);
+		}
+		
+		// Update Expected Weight
 		
 
 		
 	}
 	
+	public static SellableUnit ProductToSellableUnit(Product p) {
+		
+		return null;
+	}
+	
+	public static void waitForWeightChange() {
+		// Stop the machine until a change from the electronic scale is detected
+	}
 }

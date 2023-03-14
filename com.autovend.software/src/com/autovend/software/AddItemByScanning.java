@@ -1,7 +1,12 @@
 package com.autovend.software;
 
-public class AddItemByScanning{
+public class AddItemByScanning extends AddItem{
 
+	
+	public void foo() {
+
+	
+	}
 	
 	
 }

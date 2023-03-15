@@ -13,6 +13,7 @@ public class PrintReceipt implements ReceiptPrinterObserver{
 	
 	public PrintReceipt(SelfCheckoutStation selfcheckoutstation) {
 		scs = selfcheckoutstation;
+		scs.printer.register(this); //Registering this controller as a listener for the receipt printer in the scs
 		
 	}
 
@@ -49,6 +50,16 @@ public class PrintReceipt implements ReceiptPrinterObserver{
 	@Override
 	public void reactToInkAddedEvent(ReceiptPrinter printer) {
 		// TODO Auto-generated method stub
+		
+	}
+	
+	public void printBillRecord() {
+		//Check if the full payment has been made and this is updated on the bill record
+		
+		//Print each item on the bill and its price
+		
+		//Print the details of payment
+		
 		
 	}
 	

@@ -6,13 +6,16 @@ import com.autovend.devices.BarcodeScanner;
 import com.autovend.devices.ElectronicScale;
 import com.autovend.devices.observers.AbstractDeviceObserver;
 import com.autovend.devices.observers.BarcodeScannerObserver;
+import com.autovend.external.ProductDatabases;
+import com.autovend.products.BarcodedProduct;
 import com.autovend.products.Product;
 
 public class AddItemByScanning extends AddItem implements BarcodeScannerObserver{
 
+	
 	@Override
 	public void reactToEnabledEvent(AbstractDevice<? extends AbstractDeviceObserver> device) {
-		// TODO Auto-generated method stub
+		
 		
 	}
 
@@ -25,15 +28,22 @@ public class AddItemByScanning extends AddItem implements BarcodeScannerObserver
 	@Override
 	public void reactToBarcodeScannedEvent(BarcodeScanner barcodeScanner, Barcode barcode) {
 		
-		Product scannedProduct = getProductFromBarcode(barcode);
+		BarcodedProduct scannedProduct = getBarcodedProductFromBarcode(barcode);
 		
-		addItem(scannedProduct);
+		if(scannedProduct != null) {
+		addItemPerUnit(scannedProduct, scannedProduct.getExpectedWeight());
+		}
 		
 	}
 
-	private Product getProductFromBarcode(Barcode barcode) {
-		// TODO Auto-generated method stub
-		return null;
+	private BarcodedProduct getBarcodedProductFromBarcode(Barcode barcode) {
+		BarcodedProduct foundProduct = null;
+		
+		if(ProductDatabases.BARCODED_PRODUCT_DATABASE.containsKey(barcode)){
+			foundProduct = ProductDatabases.BARCODED_PRODUCT_DATABASE.get(barcode);
+				};
+		
+		return foundProduct;
 	}
 
 

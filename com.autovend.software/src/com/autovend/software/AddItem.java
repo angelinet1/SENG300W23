@@ -2,6 +2,7 @@ package com.autovend.software;
 
 import com.autovend.Barcode;
 import com.autovend.SellableUnit;
+import com.autovend.products.BarcodedProduct;
 import com.autovend.products.Product;
 
 public abstract class AddItem {
@@ -9,29 +10,34 @@ public abstract class AddItem {
 	static Bill currentBill;
 
 
-	public static void addItem(Product p) {
-		
-		//Check if it available(Not needed for iteration 1)
+	public static void addItemPerUnit(Product p, double weight) {
 		
 		
-		
-		//Assuming it is available
-		
+
+		//Assuming it is available		
 		if(currentBill == null) {
 			currentBill = new Bill(p);
 		} else {
 			currentBill.addProduct(p);
 		}
 		
-		// Update Expected Weight
+		currentBill.addProduct(p);
 		
-
+		// Update Expected Weight
+		currentBill.augmentExpectedWeight(weight);
+		
+		
+		
+		
 		
 	}
 	
-	public static SellableUnit ProductToSellableUnit(Product p) {
+	public static SellableUnit BarcodedProductToSellableUnit(BarcodedProduct p) {
+		
 		
 		return null;
+		
+		
 	}
 	
 	public static void waitForWeightChange() {

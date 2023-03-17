@@ -12,20 +12,36 @@ import com.autovend.devices.BillStorage;
 import com.autovend.Bill;
 import com.autovend.devices.AbstractDevice;
 import com.autovend.devices.observers.AbstractDeviceObserver;
+import com.autovend.devices.observers.BillSlotObserver;
 import com.autovend.devices.observers.BillDispenserObserver;
 
-public class PayWithCash implements BillDispenserObserver{
-
-	private BillDispenser change;
-
+public class PayWithCash implements BillDispenserObserver, BillSlotObserver{
+	
+	private BillDispenser dispenser; // create bill dispenser
+	
+	
 	@Override
 	public void reactToEnabledEvent(AbstractDevice<? extends AbstractDeviceObserver> device) {
 		// TODO Auto-generated method stub
 		
 	}
-
 	@Override
 	public void reactToDisabledEvent(AbstractDevice<? extends AbstractDeviceObserver> device) {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void reactToBillInsertedEvent(BillSlot slot) {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void reactToBillEjectedEvent(BillSlot slot) {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void reactToBillRemovedEvent(BillSlot slot) {
 		// TODO Auto-generated method stub
 		
 	}
@@ -35,46 +51,48 @@ public class PayWithCash implements BillDispenserObserver{
 		// TODO Auto-generated method stub
 		
 	}
-
 	@Override
 	public void reactToBillsEmptyEvent(BillDispenser dispenser) {
 		// TODO Auto-generated method stub
 		
 	}
-
 	@Override
 	public void reactToBillAddedEvent(BillDispenser dispenser, Bill bill) {
 		// TODO Auto-generated method stub
 		
 	}
-
 	@Override
 	public void reactToBillRemovedEvent(BillDispenser dispenser, Bill bill) {
 		// TODO Auto-generated method stub
 		
 	}
-
 	@Override
 	public void reactToBillsLoadedEvent(BillDispenser dispenser, Bill... bills) {
 		// TODO Auto-generated method stub
 		
 	}
-
 	@Override
 	public void reactToBillsUnloadedEvent(BillDispenser dispenser, Bill... bills) {
 		// TODO Auto-generated method stub
 		
 	}
+
+	
 	
 	/*
 	 * Dispenses the change due to the customer
 	 */
-	public BillDispenser getChangeFromDispenser() {
-		BillDispenser change = null; // initialize change
-		change.unload(); // get list of bills unloaded 
+	public int getChangeFromDispenser() {
+		int change = 0; // local variable change
+		List<Bill> bills = dispenser.unload(); // dispense change, get list of bills unloaded
+		for(int i = 0; i < bills.size(); i++) {
+			change  += ((Bill) bills).getValue(); // get value of the change
+		}
 		return change;
 	}
-
+	
+	
+	
 //	public void calculateTotal() {
 //		//this.inserted = getInsertedBills();
 //		for(int i = 0; i < inserted.size(); i++) {

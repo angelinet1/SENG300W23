@@ -6,7 +6,11 @@ import com.autovend.devices.observers.AbstractDeviceObserver;
 import com.autovend.devices.observers.ElectronicScaleObserver;
 
 public class ElectronicScaleObserverStub implements  ElectronicScaleObserver{
-	
+	 public SelfCheckoutMachineLogic scLogic;
+	 
+	 public ElectronicScaleObserverStub(SelfCheckoutMachineLogic callingLogic) {
+		 scLogic = callingLogic;
+	 }
 	@Override
 	public void reactToEnabledEvent(AbstractDevice<? extends AbstractDeviceObserver> device) {
 		// TODO Auto-generated method stub

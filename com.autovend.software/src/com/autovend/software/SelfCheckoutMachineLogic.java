@@ -13,7 +13,7 @@ public class SelfCheckoutMachineLogic{
 	TransactionReciept currentBill;
 	public  boolean machineLocked = false;
 	
-	public ElectronicScaleObserverStub esObserver = new ElectronicScaleObserverStub();
+	public ElectronicScaleObserverStub esObserver = new ElectronicScaleObserverStub(this);
 	public BarcodeScannerObserverStub bsObserver = new BarcodeScannerObserverStub(this);
 	
 	
@@ -137,7 +137,9 @@ public class SelfCheckoutMachineLogic{
 		return currentBill;
 	}
 
-
+	public void weightChanged(double totalWeightInGrams) {
+		
+	}
 
 
 

@@ -34,21 +34,11 @@ public abstract class AddItem {
 	}
 	
 	public static void setMachineLock(boolean newState) {
-		machineLocked = newState;
-		
 		
 	}
 	
-	/**
-	 * A method to be called to simulate a user placing an item on scale when machine prompts it
-	 */
-	public static void userPlaceItemPrompted() {
-			
-		if(machineLocked) {
-			machineLocked = false;
-		}
-		
-	};
-	
+	public static Bill getCurrentBill() {
+		return currentBill;
+	}
 	
 }

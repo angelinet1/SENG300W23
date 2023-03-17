@@ -138,6 +138,19 @@ public class SelfCheckoutMachineLogic{
 	}
 
 	public void weightChanged(double totalWeightInGrams) {
+		switch(this.reasonForLock) {
+		
+		case 1: if(totalWeightInGrams == this.currentBill.billExpectedWeight) {
+			this.setMachineLock(false);
+			this.setReasonForLock(0);
+			
+		}
+			break;
+		default: this.setMachineLock(true);
+				this.setReasonForLock(1);
+				break;
+				
+		}
 		
 	}
 

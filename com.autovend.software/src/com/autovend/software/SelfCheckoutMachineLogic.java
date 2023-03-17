@@ -3,17 +3,28 @@ package com.autovend.software;
 import com.autovend.Barcode;
 import com.autovend.devices.AbstractDevice;
 import com.autovend.devices.BarcodeScanner;
+import com.autovend.devices.ElectronicScale;
+import com.autovend.devices.SelfCheckoutStation;
 import com.autovend.devices.observers.AbstractDeviceObserver;
 import com.autovend.devices.observers.BarcodeScannerObserver;
+import com.autovend.devices.observers.ElectronicScaleObserver;
 import com.autovend.external.ProductDatabases;
 import com.autovend.products.BarcodedProduct;
 import com.autovend.products.Product;
 
-public class SelfCheckoutMachineLogic implements BarcodeScannerObserver {
+public class SelfCheckoutMachineLogic implements BarcodeScannerObserver,ElectronicScaleObserver {
 	
 	
 	static TransactionReciept currentBill;
-	public static boolean machineLocked = false;
+	public  boolean machineLocked = false;
+	
+	public SelfCheckoutMachineLogic(SelfCheckoutStation scStation) {
+		
+		scStation.scale.register(this);
+		
+		this.machineLocked = true;
+	}
+
 
 	
 	public  void addItemPerUnit(Product p, double weight) {
@@ -81,6 +92,30 @@ public class SelfCheckoutMachineLogic implements BarcodeScannerObserver {
 	
 	public static TransactionReciept getCurrentBill() {
 		return currentBill;
+	}
+
+
+
+	@Override
+	public void reactToWeightChangedEvent(ElectronicScale scale, double weightInGrams) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+
+	@Override
+	public void reactToOverloadEvent(ElectronicScale scale) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+
+	@Override
+	public void reactToOutOfOverloadEvent(ElectronicScale scale) {
+		// TODO Auto-generated method stub
+		
 	}
 
 

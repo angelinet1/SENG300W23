@@ -1,6 +1,5 @@
 package com.autovend.software;
 
-public class CashObserver {
+public class Pay {
 
-	
 }

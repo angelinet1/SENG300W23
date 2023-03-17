@@ -7,7 +7,7 @@ import com.autovend.products.Product;
 
 public abstract class AddItem {
 	
-	static Bill currentBill;
+	static TransactionReciept currentBill;
 	public static boolean machineLocked = false;
 
 
@@ -17,7 +17,7 @@ public abstract class AddItem {
 		
 		//Assuming it is available		
 		if(currentBill == null) {
-			currentBill = new Bill(p);
+			currentBill = new TransactionReciept(p);
 		} else {
 			currentBill.addProduct(p);
 		}
@@ -37,7 +37,7 @@ public abstract class AddItem {
 		
 	}
 	
-	public static Bill getCurrentBill() {
+	public static TransactionReciept getCurrentBill() {
 		return currentBill;
 	}
 	

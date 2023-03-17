@@ -9,7 +9,7 @@ import com.autovend.products.Product;
  * @author Tyson
  *
  */
-public class Bill {
+public class TransactionReciept {
 	
 	/**
 	 * Creates a new Bill of Sale
@@ -23,7 +23,7 @@ public class Bill {
 
 	double billExpectedWeight;
 	
-	public Bill() {
+	public TransactionReciept() {
 		
 		currentBill = new ArrayList<>();
 	
@@ -33,7 +33,7 @@ public class Bill {
 	 * Creates a new Bill of Sale with the product p in it
 	 */
 	
-	public Bill(Product p) {
+	public TransactionReciept(Product p) {
 		
 		currentBill = new ArrayList<Product>();
 		this.currentBill.add(p);

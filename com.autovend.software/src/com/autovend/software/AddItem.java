@@ -8,12 +8,13 @@ import com.autovend.products.Product;
 public abstract class AddItem {
 	
 	static Bill currentBill;
+	public static boolean machineLocked = false;
 
 
 	public static void addItemPerUnit(Product p, double weight) {
 		
+		if(!machineLocked) {
 		
-
 		//Assuming it is available		
 		if(currentBill == null) {
 			currentBill = new Bill(p);
@@ -26,21 +27,28 @@ public abstract class AddItem {
 		// Update Expected Weight
 		currentBill.augmentExpectedWeight(weight);
 		
-		
+		}
 		
 		
 		
 	}
 	
-	public static SellableUnit BarcodedProductToSellableUnit(BarcodedProduct p) {
-		
-		
-		return null;
+	public static void setMachineLock(boolean newState) {
+		machineLocked = newState;
 		
 		
 	}
 	
-	public static void waitForWeightChange() {
-		// Stop the machine until a change from the electronic scale is detected
-	}
+	/**
+	 * A method to be called to simulate a user placing an item on scale when machine prompts it
+	 */
+	public static void userPlaceItemPrompted() {
+			
+		if(machineLocked) {
+			machineLocked = false;
+		}
+		
+	};
+	
+	
 }

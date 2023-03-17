@@ -12,6 +12,12 @@ public class BarcodeScannerObserverStub implements BarcodeScannerObserver{
 	
 	 public AbstractDevice<? extends AbstractDeviceObserver> device = null;
 	 public boolean barcodeScaned;
+	 public SelfCheckoutMachineLogic scLogic;
+	 
+	 public BarcodeScannerObserverStub(SelfCheckoutMachineLogic controllingLogic) {
+		 scLogic = controllingLogic;
+		 
+	 }
 
 	public void reactToEnabledEvent(AbstractDevice<? extends AbstractDeviceObserver> device) {
 		this.device = device;
@@ -28,25 +34,18 @@ public class BarcodeScannerObserverStub implements BarcodeScannerObserver{
 
 
 
-	
-	public void reactToBarcodeScannedEvent(SelfCheckoutMachineLogic scmLogic, BarcodeScanner barcodeScanner, Barcode barcode) {
-		BarcodedProduct scannedProduct = null;
-		scannedProduct = getBarcodedProductFromBarcode(barcode);
+	@Override
+	public void reactToBarcodeScannedEvent(BarcodeScanner barcodeScanner, Barcode barcode) {
+		BarcodedProduct bProduct = SelfCheckoutMachineLogic.getBarcodedProductFromBarcode(barcode);
+		scLogic.addItemPerUnit(bProduct, bProduct.getExpectedWeight());
 		
-		scmLogic.addItemPerUnit(scannedProduct, scannedProduct.getExpectedWeight());
 		
 	}
-	
-	
-	
-	private BarcodedProduct getBarcodedProductFromBarcode(Barcode barcode) {
-		BarcodedProduct foundProduct = null;
-		
-		if(ProductDatabases.BARCODED_PRODUCT_DATABASE.containsKey(barcode)){
-			foundProduct = ProductDatabases.BARCODED_PRODUCT_DATABASE.get(barcode);
-				};
-		
-		return foundProduct;
-	}
+
+
+
+
+
+
 
 }

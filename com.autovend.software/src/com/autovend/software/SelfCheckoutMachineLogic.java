@@ -1,6 +1,7 @@
 package com.autovend.software;
 
 import com.autovend.Barcode;
+import com.autovend.devices.BarcodeScanner;
 import com.autovend.devices.SelfCheckoutStation;
 import com.autovend.external.ProductDatabases;
 import com.autovend.products.BarcodedProduct;
@@ -10,10 +11,10 @@ public class SelfCheckoutMachineLogic{
 	
 	
 	TransactionReciept currentBill;
-	public  boolean machineLocked = ture;
+	public  boolean machineLocked = false;
 	
 	public ElectronicScaleObserverStub esObserver = new ElectronicScaleObserverStub();
-	public BarcodeScannerObserverStub bsObserver = new BarcodeScannerObserverStub();
+	public BarcodeScannerObserverStub bsObserver = new BarcodeScannerObserverStub(this);
 	
 	
 	
@@ -94,6 +95,20 @@ public class SelfCheckoutMachineLogic{
 	
 	
 
+
+
+
+
+
+	public static BarcodedProduct getBarcodedProductFromBarcode(Barcode barcode) {
+		BarcodedProduct foundProduct = null;
+		
+		if(ProductDatabases.BARCODED_PRODUCT_DATABASE.containsKey(barcode)){
+			foundProduct = ProductDatabases.BARCODED_PRODUCT_DATABASE.get(barcode);
+				};
+		
+		return foundProduct;
+}
 	
 
 

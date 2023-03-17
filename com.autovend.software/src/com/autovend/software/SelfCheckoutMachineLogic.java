@@ -98,7 +98,7 @@ public class SelfCheckoutMachineLogic implements BarcodeScannerObserver,Electron
 
 	@Override
 	public void reactToWeightChangedEvent(ElectronicScale scale, double weightInGrams) {
-		// TODO Auto-generated method stub
+		this.machineLocked = false;
 		
 	}
 

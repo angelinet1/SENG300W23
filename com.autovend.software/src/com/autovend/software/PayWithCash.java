@@ -48,14 +48,19 @@ public class PayWithCash {
 	    // disable and enable BillSlot to register listeners with device
 	    billSlot.disable();
 	    billSlot.enable();
+	
 	    
 	    billInsertedEvent = billSlot.accept(bill);
-	    if(billInsertedEvent == true) { // if event is true, continue with procedure
-	    	int insertedBill = bill.getValue(); // get value of the inserted bill
-	    	int remainder = total - insertedBill; // reduces the remaining amount due by value of inserted bill
-	    }
-	    else {
-	    	billEjectedEvent = true; // indicate that bill was ejected
+	    
+	    if(listener_1.billInsertedEvent) {
+		    if(billInsertedEvent == true) { // if event is true, continue with procedure
+		    	int insertedBill = bill.getValue(); // get value of the inserted bill
+		    	//int total = items.getBarcodedProductFromBarcode(null);
+		    	int remainder = total - insertedBill; // reduces the remaining amount due by value of inserted bill
+		    }
+		    else {
+		    	billEjectedEvent = true; // indicate that bill was ejected
+		    }
 	    }
 	}
 	

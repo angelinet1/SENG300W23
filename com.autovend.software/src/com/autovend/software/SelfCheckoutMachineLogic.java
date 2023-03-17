@@ -1,29 +1,26 @@
 package com.autovend.software;
 
 import com.autovend.Barcode;
-import com.autovend.devices.AbstractDevice;
-import com.autovend.devices.BarcodeScanner;
-import com.autovend.devices.ElectronicScale;
 import com.autovend.devices.SelfCheckoutStation;
-import com.autovend.devices.observers.AbstractDeviceObserver;
-import com.autovend.devices.observers.BarcodeScannerObserver;
-import com.autovend.devices.observers.ElectronicScaleObserver;
 import com.autovend.external.ProductDatabases;
 import com.autovend.products.BarcodedProduct;
 import com.autovend.products.Product;
 
-public class SelfCheckoutMachineLogic implements BarcodeScannerObserver, ElectronicScaleObserver {
+public class SelfCheckoutMachineLogic{
 	
 	
 	TransactionReciept currentBill;
 	public  boolean machineLocked = false;
+	
+	public ElectronicScaleObserverStub esObserver = new ElectronicScaleObserverStub();
+	public BarcodeScannerObserverStub bsObserver = new BarcodeScannerObserverStub();
 	
 	
 	
 	/**Codes for reasons the Machine is Locked
 	 * -1: No Reason
 	 * 0: Not Locked:
-	 * 1: Unexpected Weight
+	 * 1: Locked until A change in scale weight
 	 * ...
 	 * Please add any lock codes used, and why the machine is locked
 	 */
@@ -61,7 +58,13 @@ public class SelfCheckoutMachineLogic implements BarcodeScannerObserver, Electro
 			listOfLockCodes[i] = i-1;
 		}
 		
-		scStation.scale.register(this);
+		scStation.scale.register(esObserver);
+		scStation.scale.disable();
+		scStation.scale.enable();
+		
+		scStation.handheldScanner.register(bsObserver);
+		scStation.handheldScanner.disable();
+		scStation.handheldScanner.enable();
 		
 		this.setMachineLock(false);
 	}
@@ -91,15 +94,7 @@ public class SelfCheckoutMachineLogic implements BarcodeScannerObserver, Electro
 	
 	
 
-	private BarcodedProduct getBarcodedProductFromBarcode(Barcode barcode) {
-		BarcodedProduct foundProduct = null;
-		
-		if(ProductDatabases.BARCODED_PRODUCT_DATABASE.containsKey(barcode)){
-			foundProduct = ProductDatabases.BARCODED_PRODUCT_DATABASE.get(barcode);
-				};
-		
-		return foundProduct;
-	}
+	
 
 
 	private void askCustomerToPlaceItemGUI() {
@@ -112,31 +107,8 @@ public class SelfCheckoutMachineLogic implements BarcodeScannerObserver, Electro
 	}
 	
 	
-	@Override
-	public void reactToEnabledEvent(AbstractDevice<? extends AbstractDeviceObserver> device) {
-		this.machineLocked = false; 
-		
-	}
 
 
-
-	@Override
-	public void reactToDisabledEvent(AbstractDevice<? extends AbstractDeviceObserver> device) {
-		this.machineLocked = true;
-		
-	}
-
-
-
-	@Override
-	public void reactToBarcodeScannedEvent(BarcodeScanner barcodeScanner, Barcode barcode) {
-		BarcodedProduct scannedProduct = getBarcodedProductFromBarcode(barcode);
-		
-		if(scannedProduct != null) {
-		addItemPerUnit(scannedProduct, scannedProduct.getExpectedWeight());
-		}
-		
-	}
 	
 	public void setMachineLock(boolean newState) {
 		
@@ -151,35 +123,7 @@ public class SelfCheckoutMachineLogic implements BarcodeScannerObserver, Electro
 	}
 
 
-	@Override
-	public void reactToWeightChangedEvent(ElectronicScale scale, double weightInGrams) {
-		if(weightInGrams == currentBill.billExpectedWeight) {
-			if(this.getReasonForLock() == 1) {
-				this.setMachineLock(false);
-				
-			} 
-				
-		} else {
-			this.setMachineLock(true);
-			this.setReasonForLock(1);
-			
-		}
-		
-	}
 
-
-	@Override
-	public void reactToOverloadEvent(ElectronicScale scale) {
-		// TODO Auto-generated method stub
-		
-	}
-
-
-	@Override
-	public void reactToOutOfOverloadEvent(ElectronicScale scale) {
-		// TODO Auto-generated method stub
-		
-	}
 
 
 }

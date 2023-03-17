@@ -12,22 +12,62 @@ import com.autovend.external.ProductDatabases;
 import com.autovend.products.BarcodedProduct;
 import com.autovend.products.Product;
 
-public class SelfCheckoutMachineLogic implements BarcodeScannerObserver,ElectronicScaleObserver {
+public class SelfCheckoutMachineLogic implements BarcodeScannerObserver, ElectronicScaleObserver {
 	
 	
-	static TransactionReciept currentBill;
+	TransactionReciept currentBill;
 	public  boolean machineLocked = false;
 	
-	public SelfCheckoutMachineLogic(SelfCheckoutStation scStation) {
-		
-		scStation.scale.register(this);
-		
-		this.machineLocked = true;
+	
+	
+	/**Codes for reasons the Machine is Locked
+	 * -1: No Reason
+	 * 0: Not Locked:
+	 * 1: Unexpected Weight
+	 * ...
+	 * Please add any lock codes used, and why the machine is locked
+	 */
+	private int reasonForLock;
+
+	private int[] listOfLockCodes;
+	private int numberOfLockCodes = 3;
+	
+	public int getReasonForLock() {
+		return reasonForLock;
 	}
 
 
+	/**
+	 * Set the reason the machine is being locked
+	 * @param reasonForLock: Must be a value stored in listOfLockCodes 
+	 * @return True: If reason was updated, false otherwise
+	 */
+	public boolean setReasonForLock(int reasonForLock) {
+		for(int i = 0; i < numberOfLockCodes; i++) {
+			if(reasonForLock == listOfLockCodes[i]) {
+				this.reasonForLock = reasonForLock;
+				return true;
+			}
+		}
+		return false;
+		
+	}
+	/**
+	 * Constuctor for Adding observers to pieces of hardware
+	 */
+	public SelfCheckoutMachineLogic(SelfCheckoutStation scStation) {
+		listOfLockCodes = new int[numberOfLockCodes];
+		for(int i = 0; i < this.numberOfLockCodes; i++) {
+			listOfLockCodes[i] = i-1;
+		}
+		
+		scStation.scale.register(this);
+		
+		this.setMachineLock(false);
+	}
+
 	
-	public  void addItemPerUnit(Product p, double weight) {
+	public void addItemPerUnit(Product p, double weight) {
 		
 		if(!machineLocked) {
 		
@@ -42,6 +82,9 @@ public class SelfCheckoutMachineLogic implements BarcodeScannerObserver,Electron
 		
 		// Update Expected Weight
 		currentBill.augmentExpectedWeight(weight);
+		
+		this.askCustomerToPlaceItemGUI();
+		
 		
 		}
 	}
@@ -59,7 +102,16 @@ public class SelfCheckoutMachineLogic implements BarcodeScannerObserver,Electron
 	}
 
 
-
+	private void askCustomerToPlaceItemGUI() {
+		
+		//Prompt GUI to tell customer
+		
+		this.setMachineLock(true);
+		this.setReasonForLock(1);
+		
+	}
+	
+	
 	@Override
 	public void reactToEnabledEvent(AbstractDevice<? extends AbstractDeviceObserver> device) {
 		this.machineLocked = false; 
@@ -86,22 +138,34 @@ public class SelfCheckoutMachineLogic implements BarcodeScannerObserver,Electron
 		
 	}
 	
-	public static void setMachineLock(boolean newState) {
+	public void setMachineLock(boolean newState) {
 		
+		if(newState == false) {
+			this.setReasonForLock(0);
+		}
+		this.machineLocked = newState;
 	}
 	
-	public static TransactionReciept getCurrentBill() {
+	public  TransactionReciept getCurrentBill() {
 		return currentBill;
 	}
 
 
-
 	@Override
 	public void reactToWeightChangedEvent(ElectronicScale scale, double weightInGrams) {
-		this.machineLocked = false;
+		if(weightInGrams == currentBill.billExpectedWeight) {
+			if(this.getReasonForLock() == 1) {
+				this.setMachineLock(false);
+				
+			} 
+				
+		} else {
+			this.setMachineLock(true);
+			this.setReasonForLock(1);
+			
+		}
 		
 	}
-
 
 
 	@Override
@@ -109,7 +173,6 @@ public class SelfCheckoutMachineLogic implements BarcodeScannerObserver,Electron
 		// TODO Auto-generated method stub
 		
 	}
-
 
 
 	@Override

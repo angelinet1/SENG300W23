@@ -10,7 +10,7 @@ public class SelfCheckoutMachineLogic{
 	
 	
 	TransactionReciept currentBill;
-	public  boolean machineLocked = false;
+	public  boolean machineLocked = ture;
 	
 	public ElectronicScaleObserverStub esObserver = new ElectronicScaleObserverStub();
 	public BarcodeScannerObserverStub bsObserver = new BarcodeScannerObserverStub();

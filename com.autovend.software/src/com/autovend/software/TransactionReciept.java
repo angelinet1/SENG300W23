@@ -37,6 +37,7 @@ public class TransactionReciept {
 	public TransactionReciept(Product p) {
 		
 		currentBill = new ArrayList<Product>();
+		this.billBalance = BigDecimal.valueOf(0);
 		this.currentBill.add(p);
 	
 	}

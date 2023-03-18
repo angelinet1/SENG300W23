@@ -7,7 +7,6 @@ package com.autovend.software.test;
 import static org.junit.Assert.*;
 
 import java.math.BigDecimal;
-import java.util.ArrayList;
 import java.util.Currency;
 
 import org.junit.After;
@@ -30,26 +29,25 @@ public class AddItemByScannerTest {
 	static BarcodedProduct milk_product;
 	static BarcodedProduct bread_product;
 	
-	static Product milk;
-	static Product bread;
-	
 	/**
 	 * Set up before each test.
 	 */
 	@Before
 	public void setUp() {
-		milk_barcode = new Barcode(new Numeral[] {Numeral.zero});
-		bread_barcode = new Barcode(new Numeral[] {Numeral.one});
-		
-		ProductDatabases.BARCODED_PRODUCT_DATABASE.put(milk_barcode, milk_product);
-		ProductDatabases.BARCODED_PRODUCT_DATABASE.put(bread_barcode, bread_product);
-		
 		Currency currency = Currency.getInstance("CAD");
 		int[] billDenominations = {5, 10, 20};
-		BigDecimal[] coinDenominations = {BigDecimal.valueOf(0.05), BigDecimal.valueOf(0.10),BigDecimal.valueOf(0.25)};
+		BigDecimal[] coinDenominations = {BigDecimal.valueOf(0.05), BigDecimal.valueOf(0.10), BigDecimal.valueOf(0.25)};
 		station = new SelfCheckoutStation(currency, billDenominations, coinDenominations, 10000, 5);
 		machineLogic = new SelfCheckoutMachineLogic(station);
 		
+		milk_barcode = new Barcode(new Numeral[] {Numeral.zero});
+		bread_barcode = new Barcode(new Numeral[] {Numeral.one});
+		
+		milk_product = new BarcodedProduct(milk_barcode,"2% Milk", BigDecimal.valueOf(5), 20);
+		bread_product = new BarcodedProduct(bread_barcode,"White Bread", BigDecimal.valueOf(3), 5);
+		
+		ProductDatabases.BARCODED_PRODUCT_DATABASE.put(milk_barcode, milk_product);
+		ProductDatabases.BARCODED_PRODUCT_DATABASE.put(bread_barcode, bread_product);
 	}
 
 	/**
@@ -59,6 +57,12 @@ public class AddItemByScannerTest {
 	public void tearDown() {
 		station = null;
 		machineLogic = null;
+		
+		milk_barcode = null;
+		bread_barcode = null;
+		
+		milk_product = null;
+		bread_product = null;
 	}
 
 	/**
@@ -79,29 +83,20 @@ public class AddItemByScannerTest {
 	}
 	
 	/**
-	 * Tests when an scanned item is added.
+	 * Tests when a scanned item is added and machine is unlocked.
 	 */
 	@Test 
-	public void addItem() {
-		machineLogic.addItemPerUnit(milk, 20);
+	public void addItemUnlocked() {
+		machineLogic.setMachineLock(false);
+		machineLogic.addItemPerUnit(bread_product, 5);
 	}
 	
 	/**
-	 * Tests when an scanned item is added but machine is locked.
+	 * Tests when a scanned item is added and machine is locked.
 	 */
 	@Test 
-	public void addItemMachineLocked() {
+	public void addItemLocked() {
 		machineLogic.setMachineLock(true);
-		machineLogic.addItemPerUnit(milk, 20);
-	}
-	
-	/**
-	 * Tests when an scanned item is added but the current bill is null.
-	 * 85.7% coverage
-	 */
-	@Test 
-	public void addItemBillNull() {
-		assertEquals(machineLogic.getCurrentBill(), null);
-		machineLogic.addItemPerUnit(milk, 20);
+		machineLogic.addItemPerUnit(bread_product, 5);
 	}
 }

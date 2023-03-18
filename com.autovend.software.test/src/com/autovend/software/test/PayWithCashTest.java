@@ -1,9 +1,19 @@
+/*
+ *  @author: Angeline Tran (301369846),
+ *  @author: Tyson Hartley (30117135), 
+ *  @author: Jeongah Lee (30137463), 
+ *  @author: Tyler Nguyen (30158563), 
+ *  @author: Diane Doan (30052326), 
+ *  @author: Nusyba Shifa (30162709)
+ */
+
+
 package com.autovend.software.test;
 
 import static org.junit.Assert.*;
 import org.junit.After;
 import org.junit.Before;
-import java.util.currency;
+import java.util.Currency;
 
 import com.autovend.Barcode;
 import com.autovend.devices.BillSlot;
@@ -19,37 +29,19 @@ public class PayWithCashTest {
 	private BillSlot billSlot; // create bill slot
 	
 	@Before
-	public void setup(boolean billEjectedEvent()) {
+	public void setup() {
 		// create listener objects
-		var listener_1 = new BillSlotObserverStub();
-	    var listener_2 = new BillSlotObserverStub();
-	    var listener_3 = new BillSlotObserverStub();
+		listener_1 = new BillSlotObserverStub();
+	    listener_2 = new BillSlotObserverStub();
+	    listener_3 = new BillSlotObserverStub();
 	  
-	    var billSlot = new BillSlot();
-	    var barcode = new Barcode();
-	    var transactionreciept = new TransactionReceipt();
-	    var cashIO = new CashIO();
-	    var customerIO = new CustomerIO();
-	    
-	    
-
-	    
 	    // register listener 1 and 2
-	    billSlot.register(listener_1);
-	    billSlot.register(listener_2);
-	    
-	    // disable and enable BillSlot to register listeners with device
-	    billSlot.disable();
-	    billSlot.enable();	
-	    
-	    //Call main
-	    PayWithCash.main();
-	    //assertion
-	    assertTrue(listener.getInsertedEvent());
-	    
-	    //check ejection of bill
-	   assertFalse(payWithCash.billEjectedEvent);
-	    
+        billSlot.register(listener_1);
+        billSlot.register(listener_2);
+        
+        // disable and enable BillValidator to register listeners with device
+        billSlot.disable();
+        billSlot.enable();
 	}
 	
 	/*

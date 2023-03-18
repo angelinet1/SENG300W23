@@ -13,10 +13,14 @@ package com.autovend.software.test;
 import static org.junit.Assert.assertEquals;
 import org.junit.After;
 import org.junit.Before;
+<<<<<<< HEAD
 import org.junit.Test;
 
 import java.util.Currency;
 import java.math.BigDecimal;
+=======
+import java.util.Currency;
+>>>>>>> refs/heads/PayWithCashUpdate
 
 import com.autovend.Barcode;
 import com.autovend.Bill;

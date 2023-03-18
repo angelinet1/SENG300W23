@@ -3,7 +3,7 @@ package com.autovend.software.test;
 import static org.junit.Assert.*;
 import org.junit.After;
 import org.junit.Before;
-import java.util.currency;
+import java.util.Currency;
 
 import com.autovend.Barcode;
 import com.autovend.devices.BillSlot;

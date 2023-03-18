@@ -19,7 +19,7 @@ public class PayWithCashTest {
 	private BillSlot billSlot; // create bill slot
 	
 	@Before
-	public void setup() {
+	public void setup(boolean billEjectedEvent()) {
 		// create listener objects
 		var listener_1 = new BillSlotObserverStub();
 	    var listener_2 = new BillSlotObserverStub();
@@ -47,6 +47,9 @@ public class PayWithCashTest {
 	    //assertion
 	    assertTrue(listener.getInsertedEvent());
 	    
+	    //check ejection of bill
+	   assertFalse(payWithCash.billEjectedEvent);
+	    
 	}
 	
 	/*
@@ -54,9 +57,10 @@ public class PayWithCashTest {
      */
     @After
     public void tearDown() {
-        billSlot = null;
-        listener_1 = null;
-        listener_2 = null;
-        listener_3 = null;
+    	billSlot = null;
+    	listener_1 = null;
+    	listener_2 = null;
+    	listener_3 = null;
+    	
     }
 }

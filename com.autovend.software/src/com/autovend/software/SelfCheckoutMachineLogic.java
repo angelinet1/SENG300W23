@@ -28,13 +28,12 @@ public class SelfCheckoutMachineLogic{
 	public BillSlot billSlot; // create bill slot
 	public BillDispenser dispenser; // create bill dispenser
 	public Bill bill; // create a bill
-	public Barcode barcode; // create a barcode
-	public BarcodedProduct item; // create a barcoded product
 	public BigDecimal price; // create local variable price
 	public BigDecimal total; // create local variable total
 	public BigDecimal remainder; // create local variable remainder
 	public BigDecimal change; // create local variable change
-	public BillSlotObserverStub listener_1; // create listener
+	public BillSlotObserverStub listener_1; // create listener for bill slot observer
+	public BillValidatorObserverStub listener_2; // create listener for bill validator observer
 	public CashIO cashIO; // create cash i/o
 	public CustomerIO customerIO; // create customer i/o
 	public TransactionReceipt items; // create items from the purchase
@@ -81,6 +80,7 @@ public class SelfCheckoutMachineLogic{
 		return false;
 		
 	}
+	
 	/**
 	 * Constructor for Adding observers to pieces of hardware
 	 */
@@ -101,8 +101,6 @@ public class SelfCheckoutMachineLogic{
 		this.setMachineLock(false);
 	}
 
-	
-	
 	
 	/**
 	 * 
@@ -133,12 +131,11 @@ public class SelfCheckoutMachineLogic{
 	}
 	
 
-
 	/**
 	 * 	Takes a barecode and returns a barcoded product if it is a valid barcode
 	 * Otherwise returns null
 	 * @param barcode: The barcode of the Barcoded Product being looked for
-	 * @return If the barcode corossponds to one in the database, return that product otherwise return null
+	 * @return If the barcode corresponds to one in the database, return that product otherwise return null
 	 */
 	public static BarcodedProduct getBarcodedProductFromBarcode(Barcode barcode) {
 		BarcodedProduct foundProduct = null;
@@ -151,9 +148,8 @@ public class SelfCheckoutMachineLogic{
 	}
 	
 
-
 	/**
-	 * Tells the machine to wait until the customer chnages the weight of the scale
+	 * Tells the machine to wait until the customer changes the weight of the scale
 	 */
 	private void askCustomerToPlaceItemGUI() {
 		
@@ -164,9 +160,6 @@ public class SelfCheckoutMachineLogic{
 		
 	}
 	
-	
-
-
 	
 	/**
 	 * Sets the machines lock state to newState. If the machine is unlocked set reason for lock to 0
@@ -211,21 +204,39 @@ public class SelfCheckoutMachineLogic{
 		}
 		
 	}
-
 	
 	/*
-	 * Main function for pay with cash
+	 * Setter for the total money owed
+	 */
+	public void setTotal(BigDecimal total) {
+		this.total = total;
+	}
+	
+	/*
+	 * Getter for the total 
+	 */
+	public BigDecimal getTotal() {
+		return this.total;
+	}
+	
+	/*
+	 * Getter for the change returned
+	 */
+	public BigDecimal getChange() {
+		return this.change;
+	}
+	
+	/*
+	 * Function for pay with cash, called whenever the customer wants to pay for their purchase with cash
 	 */
 	public void payWithCash(){
-	    item = SelfCheckoutMachineLogic.getBarcodedProductFromBarcode(barcode); // get the scanned item
-    	price = item.getPrice(); // get price of item
-    	total = items.augmentBillBalance(price); // get the total purchase value
+    	total = items.getBillBalance(); // get the total purchase value
     	
     	remainder = total; // initialize remaining amount to pay
     	int compare = remainder.compareTo(BigDecimal.ZERO); // local variable to store comparison
     	while(compare == 1) { // comparison returns 1 if remainder > 0
     		if(listener_1.getInsertedEvent()) { // if event is true, continue with procedure
-    			if(billValidEvent){
+    			if(listener_2.billValidEvent){ // check if bill was valid
     				int insertedBill = bill.getValue(); // get value of the inserted bill
         		    BigDecimal updateBill = BigDecimal.valueOf(insertedBill); // convert bill to BigDecimal type
         		    remainder = total.subtract(updateBill); // reduces the remaining amount due by value of inserted bill

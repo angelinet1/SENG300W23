@@ -26,6 +26,7 @@ public class TransactionReciept {
 	public TransactionReciept() {
 		
 		currentBill = new ArrayList<>();
+		this.billBalance = BigDecimal.valueOf(0);
 	
 	}
 	

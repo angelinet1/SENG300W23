@@ -19,61 +19,23 @@ import com.autovend.products.Product;
  * Controls the logic of the receipt printer. Keeps track of if the printer runs our of paper and/or
  * while printing the receipt.
  */
-public class PrintReceipt implements ReceiptPrinterObserver{
+public class PrintReceipt{
 	
-	private  SelfCheckoutStation scs;
+	private SelfCheckoutStation scs;
+	private SelfCheckoutMachineLogic machineLogic;
 	private AttendantIO attendant;
-	private boolean outOfPaper = false;
-	private boolean outOfInk = false;
+	private ReceiptPrinterObserverStub observerStub;
 	
-	public PrintReceipt(SelfCheckoutStation selfcheckoutstation, AttendantIO attendant) {
-		scs = selfcheckoutstation;
-		scs.printer.register(this); //Registering this controller as a listener for the receipt printer in the scs
-		
+	public PrintReceipt(SelfCheckoutStation selfcheckoutstation, SelfCheckoutMachineLogic machineLogic, AttendantIO attendant) {
+		this.scs = selfcheckoutstation;
+		this.machineLogic = machineLogic;
 		this.attendant = attendant;
 		
+		observerStub = new ReceiptPrinterObserverStub(attendant);
+		scs.printer.register(observerStub); //Registering this controller as a listener for the receipt printer in the scs
+		
 	}
 	
-	@Override
-	public void reactToEnabledEvent(AbstractDevice<? extends AbstractDeviceObserver> device) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void reactToDisabledEvent(AbstractDevice<? extends AbstractDeviceObserver> device) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void reactToOutOfPaperEvent(ReceiptPrinter printer) {
-		// TODO Auto-generated method stub
-		
-		attendant.informAttendant("Paper out in printer. Duplicate receipt must be printed and station needs maintenance.");
-		outOfPaper = true;
-		
-	}
-
-	@Override
-	public void reactToOutOfInkEvent(ReceiptPrinter printer) {
-		// TODO Auto-generated method stub
-		
-		attendant.informAttendant("Ink out in printer. Duplicate receipt must be printed and station needs maintenance.");
-		outOfPaper = true;
-	}
-
-	@Override
-	public void reactToPaperAddedEvent(ReceiptPrinter printer) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void reactToInkAddedEvent(ReceiptPrinter printer) {
-		// TODO Auto-generated method stub
-		
-	}
 	
 	/**
 	 * Prints the products, their price, and payment details of the bill record. 
@@ -90,29 +52,37 @@ public class PrintReceipt implements ReceiptPrinterObserver{
 			char[] productDescription = productToPrint.getDescription().toCharArray(); //Get the product description and store it in a char array
 			
 			//Print each char in the product description
-			for (i = 0; i < productDescription.length; i++) {
-				scs.printer.print(productDescription[i]);
-				if (outOfPaper || outOfInk) { //If the printer is out of paper or ink, abort printing the receipt
+			for (int j = 0; j < productDescription.length; j++) {
+				scs.printer.print(productDescription[j]);
+				if (observerStub.getOutOfPaper() || observerStub.getOutOfInk()) { //If the printer is out of paper or ink, abort printing the receipt
+					machineLogic.setMachineLock(true);
+					machineLogic.setReasonForLock(2);
 					return;
 				}
 
 			}
 			
-			scs.printer.print('\t'); //tab
-			if (outOfPaper || outOfInk) { //If the printer is out of paper or ink, abort printing the receipt
+			scs.printer.print(' '); //space
+			if (observerStub.getOutOfPaper() || observerStub.getOutOfInk()) { //If the printer is out of paper or ink, abort printing the receipt
+				machineLogic.setMachineLock(true);
+				machineLogic.setReasonForLock(2);
 				return;
 			}
 			
 			scs.printer.print('$'); //$ to go before printing the price
-			if (outOfPaper || outOfInk) { //If the printer is out of paper or ink, abort printing the receipt
+			if (observerStub.getOutOfPaper() || observerStub.getOutOfInk()) { //If the printer is out of paper or ink, abort printing the receipt
+				machineLogic.setMachineLock(true);
+				machineLogic.setReasonForLock(2);
 				return;
 			}
 			
 			char[] productPrice = productToPrint.getPrice().toString().toCharArray();
 			//Print each number in the price
-			for (i = 0; i < productPrice.length; i++) {
-				scs.printer.print(productPrice[i]);
-				if (outOfPaper || outOfInk) { //If the printer is out of paper or ink, abort printing the receipt
+			for (int p = 0; p < productPrice.length; p++) {
+				scs.printer.print(productPrice[p]);
+				if (observerStub.getOutOfPaper() || observerStub.getOutOfInk()) { //If the printer is out of paper or ink, abort printing the receipt
+					machineLogic.setMachineLock(true);
+					machineLogic.setReasonForLock(2);
 					return;
 				}
 
@@ -122,41 +92,34 @@ public class PrintReceipt implements ReceiptPrinterObserver{
 			
 		}
 		
-		//PRINT THE DETAILS OF PAYMENT
+		//Print details of the payment
+		String totalTextString = "TOTAL:$";
+		char[] totalText = totalTextString.toCharArray();
+		for (int u = 0; u < totalText.length; u++) {
+			scs.printer.print(totalText[u]);
+			if (observerStub.getOutOfPaper() || observerStub.getOutOfInk()) { //If the printer is out of paper or ink, abort printing the receipt
+				machineLogic.setMachineLock(true);
+				machineLogic.setReasonForLock(2);
+				return;
+			}
+		}
 		
+		//char[] totalPrice = machineLogic.total.toString().toCharArray();
 		
 	}
 	
 	/**
 	 * Cuts the receipt. Simulate the customer taking their receipt.
 	 * 
-	 * @throws EmptyException: If the receipt is not cut and the customer is unable to take their receipt.
 	 */
-	public void takeReceipt() throws EmptyException{
+	public String takeReceipt(){
 		scs.printer.cutPaper(); //Cut the receipt from the receipt printer
 		String receipt = scs.printer.removeReceipt(); //Simulate a customer removing and taking their receipt
-		
-		if(receipt == null) {
-			throw new EmptyException("The receipt cannot be removed because it has not been cut.");
-		}
+		return receipt;
 	}
 	
-	/**
-	 * Return value of outOfPaper boolean.
-	 * 
-	 * @return: Boolean of if the printer is out of paper or not.
-	 */
-	public boolean getOutOfPaper() {
-		return outOfPaper;
-	}
-	
-	/**
-	 * Return value of outOfInk boolean.
-	 * 
-	 * @return: Boolean of if the printer is out of ink or not.
-	 */
-	public boolean getOutOfInk() {
-		return outOfInk;
+	public ReceiptPrinterObserverStub getObserverStub() {
+		return observerStub;
 	}
 	
 

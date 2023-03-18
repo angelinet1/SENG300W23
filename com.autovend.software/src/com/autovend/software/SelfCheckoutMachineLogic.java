@@ -78,7 +78,7 @@ public class SelfCheckoutMachineLogic{
 		scStation.handheldScanner.disable();
 		scStation.handheldScanner.enable();
 		
-		printReceipt = new PrintReceipt(scStation, attendant);
+		printReceipt = new PrintReceipt(scStation, this, attendant);
 		
 		this.setMachineLock(false);
 	}
@@ -183,9 +183,7 @@ public class SelfCheckoutMachineLogic{
 		printReceipt.printBillRecord(billRecord);
 		//If the printer ran out of paper and/or ink while printing the receipt, printBillRecord() will return instead of continuing to print the receipt
 		//Check if printer ran out of paper and/or ink while printing the receipt
-		if(printReceipt.getOutOfPaper() || printReceipt.getOutOfInk()) {
-			this.setMachineLock(true); //Suspend the station if paper and/or ink is out
-			this.setReasonForLock(2);
+		if(printReceipt.getObserverStub().getOutOfPaper() || printReceipt.getObserverStub().getOutOfInk()) {
 			return;
 		}
 		

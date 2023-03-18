@@ -47,6 +47,7 @@ public class PayWithCash {
     	int compare = remainder.compareTo(BigDecimal.ZERO); // local variable to store comparison
     	while(compare == 1) { // comparison returns 1 if remainder > 0
     		if(listener_1.getInsertedEvent()) { // if event is true, continue with procedure
+    			if()
     		    int insertedBill = bill.getValue(); // get value of the inserted bill
     		    BigDecimal updateBill = BigDecimal.valueOf(insertedBill); // convert bill to BigDecimal type
     		    remainder = total.subtract(updateBill); // reduces the remaining amount due by value of inserted bill

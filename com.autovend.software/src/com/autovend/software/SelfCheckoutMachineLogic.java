@@ -39,7 +39,6 @@ public class SelfCheckoutMachineLogic{
 	public BillSlotObserverStub listener_1; // create listener
 	public CashIO cashIO; // create cash i/o
 	public CustomerIO customerIO; // create customer i/o
-	public TransactionReceipt items; // create items from the purchase
 	public boolean billInsertedEvent = false;
 	public boolean billValidEvent = false;
 	
@@ -244,7 +243,7 @@ public class SelfCheckoutMachineLogic{
 	 * Main function for pay with cash
 	 */
 	public void payWithCash(){
-    	total = items.getBillBalance(); // get the total purchase value
+    	total = currentBill.getBillBalance(); // get the total purchase value
     	
     	remainder = total; // initialize remaining amount to pay
     	int compare = remainder.compareTo(BigDecimal.ZERO); // local variable to store comparison

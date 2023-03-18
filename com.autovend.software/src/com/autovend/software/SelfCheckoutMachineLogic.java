@@ -1,6 +1,8 @@
 package com.autovend.software;
 
 import com.autovend.Barcode;
+import com.autovend.BarcodedUnit;
+import com.autovend.SellableUnit;
 import com.autovend.devices.BarcodeScanner;
 import com.autovend.devices.SelfCheckoutStation;
 import com.autovend.external.ProductDatabases;
@@ -108,7 +110,14 @@ public class SelfCheckoutMachineLogic{
 	
 
 
-
+	public static BarcodedUnit getBarcodedUnitFromBarcode(Barcode barcode) {
+		BarcodedProduct foundProduct = getBarcodedProductFromBarcode(barcode);
+		
+		BarcodedUnit bUnit = new BarcodedUnit(barcode, foundProduct.getExpectedWeight());
+		
+	
+		return bUnit;
+}
 
 
 
@@ -127,7 +136,7 @@ public class SelfCheckoutMachineLogic{
 		
 		return foundProduct;
 }
-	
+
 
 
 	/**

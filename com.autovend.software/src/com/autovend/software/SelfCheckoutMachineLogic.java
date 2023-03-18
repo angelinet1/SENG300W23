@@ -1,3 +1,4 @@
+
 /*
  *  @author: Angeline Tran (301369846),
  *  @author: Tyson Hartley (30117135), 
@@ -47,12 +48,16 @@ public class SelfCheckoutMachineLogic{
 	public ElectronicScaleObserverStub esObserver = new ElectronicScaleObserverStub(this);
 	public BarcodeScannerObserverStub bsObserver = new BarcodeScannerObserverStub(this);
 	
+	public PrintReceipt printReceipt; //This is the controller for printing the receipt
+	public AttendantIO attendant = new AttendantIO(); //Creating an attendantIO that will receive and store calls to attendant
+	public CustomerDisplayIO customerDisplay = new CustomerDisplayIO(); //Creating a display where messages to customers can go
 	
 	
 	/**Codes for reasons the Machine is Locked
 	 * -1: No Reason
 	 * 0: Not Locked:
 	 * 1: Locked until A change in scale weight
+	 * 2: Locked until printer out of paper and/or ink is handled
 	 * ...
 	 * Please add any lock codes used, and why the machine is locked
 	 */
@@ -81,6 +86,8 @@ public class SelfCheckoutMachineLogic{
 		return false;
 		
 	}
+
+	
 	/**
 	 * Constructor for Adding observers to pieces of hardware
 	 */
@@ -98,11 +105,11 @@ public class SelfCheckoutMachineLogic{
 		scStation.handheldScanner.disable();
 		scStation.handheldScanner.enable();
 		
+		printReceipt = new PrintReceipt(scStation, this, attendant);
+		
 		this.setMachineLock(false);
 	}
 
-	
-	
 	
 	/**
 	 * 
@@ -251,5 +258,34 @@ public class SelfCheckoutMachineLogic{
     	// Change will then be distributed by BillStorage
     	// Move on to Receipt Printer
 	}
+	
+	/**
+	 * Prints the receipt when signal is received that the customer has paid and the bill record is 
+	 * updated with the payment details.
+	 * 
+	 * @param billRecord: Current bill that is printed
+	 * @throws OverloadException: If the extra character would spill off the end of the line.
+	 * @throws EmptyException: If there is insufficient paper or ink to print the character or
+	 * 			the receipt has not been cut so unable for the customer to take it.
+	 */
+	public void signalToPrintReceipt(TransactionReceipt billRecord) throws OverloadException, EmptyException{
+		//Check that the payment in full has been received 
+		//Check that the bill record is updated with he details of payment
+		
+		printReceipt.printBillRecord(billRecord);
+		//If the printer ran out of paper and/or ink while printing the receipt, printBillRecord() will return instead of continuing to print the receipt
+		//Check if printer ran out of paper and/or ink while printing the receipt
+		if(printReceipt.getObserverStub().getOutOfPaper() || printReceipt.getObserverStub().getOutOfInk()) {
+			return;
+		}
+		
+		printReceipt.takeReceipt();
+		customerDisplay.informCustomer("Your session is complete. Thank you for shopping with us.");
+		this.currentBill = null; //Null the current bill since the customer's session is over
+		
+		//TEST MERGE
+	}
+
+
 
 }

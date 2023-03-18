@@ -1,3 +1,4 @@
+
 /*
  *  @author: Angeline Tran (301369846),
  *  @author: Tyson Hartley (30117135), 
@@ -28,12 +29,13 @@ public class SelfCheckoutMachineLogic{
 	public BillSlot billSlot; // create bill slot
 	public BillDispenser dispenser; // create bill dispenser
 	public Bill bill; // create a bill
+	public Barcode barcode; // create a barcode
+	public BarcodedProduct item; // create a barcoded product
 	public BigDecimal price; // create local variable price
 	public BigDecimal total; // create local variable total
 	public BigDecimal remainder; // create local variable remainder
 	public BigDecimal change; // create local variable change
-	public BillSlotObserverStub listener_1; // create listener for bill slot observer
-	public BillValidatorObserverStub listener_2; // create listener for bill validator observer
+	public BillSlotObserverStub listener_1; // create listener
 	public CashIO cashIO; // create cash i/o
 	public CustomerIO customerIO; // create customer i/o
 	public TransactionReceipt items; // create items from the purchase
@@ -46,12 +48,16 @@ public class SelfCheckoutMachineLogic{
 	public ElectronicScaleObserverStub esObserver = new ElectronicScaleObserverStub(this);
 	public BarcodeScannerObserverStub bsObserver = new BarcodeScannerObserverStub(this);
 	
+	public PrintReceipt printReceipt; //This is the controller for printing the receipt
+	public AttendantIO attendant = new AttendantIO(); //Creating an attendantIO that will receive and store calls to attendant
+	public CustomerDisplayIO customerDisplay = new CustomerDisplayIO(); //Creating a display where messages to customers can go
 	
 	
 	/**Codes for reasons the Machine is Locked
 	 * -1: No Reason
 	 * 0: Not Locked:
 	 * 1: Locked until A change in scale weight
+	 * 2: Locked until printer out of paper and/or ink is handled
 	 * ...
 	 * Please add any lock codes used, and why the machine is locked
 	 */
@@ -80,6 +86,7 @@ public class SelfCheckoutMachineLogic{
 		return false;
 		
 	}
+
 	
 	/**
 	 * Constructor for Adding observers to pieces of hardware
@@ -97,6 +104,8 @@ public class SelfCheckoutMachineLogic{
 		scStation.handheldScanner.register(bsObserver);
 		scStation.handheldScanner.disable();
 		scStation.handheldScanner.enable();
+		
+		printReceipt = new PrintReceipt(scStation, this, attendant);
 		
 		this.setMachineLock(false);
 	}
@@ -131,11 +140,12 @@ public class SelfCheckoutMachineLogic{
 	}
 	
 
+
 	/**
 	 * 	Takes a barecode and returns a barcoded product if it is a valid barcode
 	 * Otherwise returns null
 	 * @param barcode: The barcode of the Barcoded Product being looked for
-	 * @return If the barcode corresponds to one in the database, return that product otherwise return null
+	 * @return If the barcode corossponds to one in the database, return that product otherwise return null
 	 */
 	public static BarcodedProduct getBarcodedProductFromBarcode(Barcode barcode) {
 		BarcodedProduct foundProduct = null;
@@ -148,8 +158,9 @@ public class SelfCheckoutMachineLogic{
 	}
 	
 
+
 	/**
-	 * Tells the machine to wait until the customer changes the weight of the scale
+	 * Tells the machine to wait until the customer chnages the weight of the scale
 	 */
 	private void askCustomerToPlaceItemGUI() {
 		
@@ -160,6 +171,9 @@ public class SelfCheckoutMachineLogic{
 		
 	}
 	
+	
+
+
 	
 	/**
 	 * Sets the machines lock state to newState. If the machine is unlocked set reason for lock to 0
@@ -204,39 +218,21 @@ public class SelfCheckoutMachineLogic{
 		}
 		
 	}
+
 	
 	/*
-	 * Setter for the total money owed
-	 */
-	public void setTotal(BigDecimal total) {
-		this.total = total;
-	}
-	
-	/*
-	 * Getter for the total 
-	 */
-	public BigDecimal getTotal() {
-		return this.total;
-	}
-	
-	/*
-	 * Getter for the change returned
-	 */
-	public BigDecimal getChange() {
-		return this.change;
-	}
-	
-	/*
-	 * Function for pay with cash, called whenever the customer wants to pay for their purchase with cash
+	 * Main function for pay with cash
 	 */
 	public void payWithCash(){
-    	total = items.getBillBalance(); // get the total purchase value
+	    item = SelfCheckoutMachineLogic.getBarcodedProductFromBarcode(barcode); // get the scanned item
+    	price = item.getPrice(); // get price of item
+    	total = items.augmentBillBalance(price); // get the total purchase value
     	
     	remainder = total; // initialize remaining amount to pay
     	int compare = remainder.compareTo(BigDecimal.ZERO); // local variable to store comparison
     	while(compare == 1) { // comparison returns 1 if remainder > 0
     		if(listener_1.getInsertedEvent()) { // if event is true, continue with procedure
-    			if(listener_2.billValidEvent){ // check if bill was valid
+    			if(billValidEvent){
     				int insertedBill = bill.getValue(); // get value of the inserted bill
         		    BigDecimal updateBill = BigDecimal.valueOf(insertedBill); // convert bill to BigDecimal type
         		    remainder = total.subtract(updateBill); // reduces the remaining amount due by value of inserted bill
@@ -262,5 +258,34 @@ public class SelfCheckoutMachineLogic{
     	// Change will then be distributed by BillStorage
     	// Move on to Receipt Printer
 	}
+	
+	/**
+	 * Prints the receipt when signal is received that the customer has paid and the bill record is 
+	 * updated with the payment details.
+	 * 
+	 * @param billRecord: Current bill that is printed
+	 * @throws OverloadException: If the extra character would spill off the end of the line.
+	 * @throws EmptyException: If there is insufficient paper or ink to print the character or
+	 * 			the receipt has not been cut so unable for the customer to take it.
+	 */
+	public void signalToPrintReceipt(TransactionReceipt billRecord) throws OverloadException, EmptyException{
+		//Check that the payment in full has been received 
+		//Check that the bill record is updated with he details of payment
+		
+		printReceipt.printBillRecord(billRecord);
+		//If the printer ran out of paper and/or ink while printing the receipt, printBillRecord() will return instead of continuing to print the receipt
+		//Check if printer ran out of paper and/or ink while printing the receipt
+		if(printReceipt.getObserverStub().getOutOfPaper() || printReceipt.getObserverStub().getOutOfInk()) {
+			return;
+		}
+		
+		printReceipt.takeReceipt();
+		customerDisplay.informCustomer("Your session is complete. Thank you for shopping with us.");
+		this.currentBill = null; //Null the current bill since the customer's session is over
+		
+		//TEST MERGE
+	}
+
+
 
 }

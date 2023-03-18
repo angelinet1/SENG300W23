@@ -68,6 +68,7 @@ public class TransactionReceipt {
 
 	public void addProduct(Product p) {
 		currentBill.add(p);
+		p.getPrice();
 		
 	}
 	
@@ -85,9 +86,11 @@ public class TransactionReceipt {
 	 * Used to increase or decrease Balance by a Big Decimal
 	 * 
 	 * @param BigDecimal addend
+	 * @return 
 	 */
-	public void augmentBillBalance(BigDecimal addend) {
+	public BigDecimal augmentBillBalance(BigDecimal addend) {
 		this.billBalance.add(addend);
+		return billBalance;
 	}
 
 	public double getBillExpectedWeight() {

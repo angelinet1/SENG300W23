@@ -1,30 +1,24 @@
-/**
- *  @authors: Angeline Tran (301369846), Tyson Hartley (30117135), Jeongah Lee (30137463), Tyler Nguyen (30158563), Diane Doan (30052326), Nusyba Shifa (30162709)
- */
-
 package com.autovend.software;
 
 import com.autovend.Barcode;
 import com.autovend.devices.BarcodeScanner;
-import com.autovend.devices.EmptyException;
-import com.autovend.devices.OverloadException;
 import com.autovend.devices.SelfCheckoutStation;
 import com.autovend.external.ProductDatabases;
 import com.autovend.products.BarcodedProduct;
 import com.autovend.products.Product;
 
+/**
+ * @author tyson
+ *
+ */
 public class SelfCheckoutMachineLogic{
 	
 	
-	TransactionReceipt currentBill;
+	TransactionReciept currentBill;
 	public  boolean machineLocked = false;
 	
 	public ElectronicScaleObserverStub esObserver = new ElectronicScaleObserverStub(this);
 	public BarcodeScannerObserverStub bsObserver = new BarcodeScannerObserverStub(this);
-	
-	public PrintReceipt printReceipt; //This is the controller for printing the receipt
-	public AttendantIO attendant = new AttendantIO(); //Creating an attendantIO that will receive and store calls to attendant
-	public CustomerDisplayIO customerDisplay = new CustomerDisplayIO(); //Creating a display where messages to customers can go
 	
 	
 	
@@ -32,7 +26,6 @@ public class SelfCheckoutMachineLogic{
 	 * -1: No Reason
 	 * 0: Not Locked:
 	 * 1: Locked until A change in scale weight
-	 * 2: Locked until printer out of paper and/or ink is handled
 	 * ...
 	 * Please add any lock codes used, and why the machine is locked
 	 */
@@ -78,24 +71,30 @@ public class SelfCheckoutMachineLogic{
 		scStation.handheldScanner.disable();
 		scStation.handheldScanner.enable();
 		
-		printReceipt = new PrintReceipt(scStation, attendant);
-		
 		this.setMachineLock(false);
 	}
 
 	
+	
+	
+	/**
+	 * 
+	 * 	Adds an item that is sold by unit to the currentBill, updating the weight and total balance
+	 * @param p: The product being added
+	 * @param weight: the weight of p in grams
+	 */
 	public void addItemPerUnit(Product p, double weight) {
 		
 		if(!machineLocked) {
 		
 		//Assuming it is available		
 		if(currentBill == null) {
-			currentBill = new TransactionReceipt(p);
+			currentBill = new TransactionReciept(p);
 		} else {
 			currentBill.addProduct(p);
 		}
 		
-		currentBill.addProduct(p);
+		currentBill.augmentBillBalance(p.getPrice());
 		
 		// Update Expected Weight
 		currentBill.augmentExpectedWeight(weight);
@@ -113,6 +112,12 @@ public class SelfCheckoutMachineLogic{
 
 
 
+	/**
+	 * 	Takes a barecode and returns a barcoded product if it is a valid barcode
+	 * Otherwise returns null
+	 * @param barcode: The barcode of the Barcoded Product being looked for
+	 * @return If the barcode corossponds to one in the database, return that product otherwise return null
+	 */
 	public static BarcodedProduct getBarcodedProductFromBarcode(Barcode barcode) {
 		BarcodedProduct foundProduct = null;
 		
@@ -125,6 +130,9 @@ public class SelfCheckoutMachineLogic{
 	
 
 
+	/**
+	 * Tells the machine to wait until the customer chnages the weight of the scale
+	 */
 	private void askCustomerToPlaceItemGUI() {
 		
 		//Prompt GUI to tell customer
@@ -138,6 +146,10 @@ public class SelfCheckoutMachineLogic{
 
 
 	
+	/**
+	 * Sets the machines lock state to newState. If the machine is unlocked set reason for lock to 0
+	 * @param newState
+	 */
 	public void setMachineLock(boolean newState) {
 		
 		if(newState == false) {
@@ -146,10 +158,21 @@ public class SelfCheckoutMachineLogic{
 		this.machineLocked = newState;
 	}
 	
-	public  TransactionReceipt getCurrentBill() {
+	
+	/**
+	 * 
+	 * @return Returns a reference to the current bill the machine is processing
+	 */
+	public  TransactionReciept getCurrentBill() {
 		return currentBill;
 	}
 
+	/**
+	 * This function is called whenever there is a weightChanged detected by the scale.
+	 * If the machine is currently being locked becuase it expects a change it weight
+	 * It checks if it is what the billExpects the weight to be otherwise it will lock the machine
+	 * @param totalWeightInGrams: the total weight of the scale in grams.
+	 */
 	public void weightChanged(double totalWeightInGrams) {
 		switch(this.reasonForLock) {
 		
@@ -165,33 +188,6 @@ public class SelfCheckoutMachineLogic{
 				
 		}
 		
-	}
-	
-	/**
-	 * Prints the receipt when signal is received that the customer has paid and the bill record is 
-	 * updated with the payment details.
-	 * 
-	 * @param billRecord: Current bill that is printed
-	 * @throws OverloadException: If the extra character would spill off the end of the line.
-	 * @throws EmptyException: If there is insufficient paper or ink to print the character or
-	 * 			the receipt has not been cut so unable for the customer to take it.
-	 */
-	public void signalToPrintReceipt(TransactionReceipt billRecord) throws OverloadException, EmptyException{
-		//Check that the payment in full has been received 
-		//Check that the bill record is updated with he details of payment
-		
-		printReceipt.printBillRecord(billRecord);
-		//If the printer ran out of paper and/or ink while printing the receipt, printBillRecord() will return instead of continuing to print the receipt
-		//Check if printer ran out of paper and/or ink while printing the receipt
-		if(printReceipt.getOutOfPaper() || printReceipt.getOutOfInk()) {
-			this.setMachineLock(true); //Suspend the station if paper and/or ink is out
-			this.setReasonForLock(2);
-			return;
-		}
-		
-		printReceipt.takeReceipt();
-		customerDisplay.informCustomer("Your session is complete. Thank you for shopping with us.");
-		this.currentBill = null; //Null the current bill since the customer's session is over
 	}
 
 

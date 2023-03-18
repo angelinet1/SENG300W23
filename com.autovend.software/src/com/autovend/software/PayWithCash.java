@@ -23,7 +23,11 @@ public class PayWithCash {
 	public BillSlot billSlot; // create bill slot
 	public BillDispenser dispenser; // create bill dispenser
 	public Bill bill; // create a bill
-	public Barcode barcode;
+	public Barcode barcode; // create a barcode
+	public BarcodedProduct item; // create a barcoded product
+	public BigDecimal price; // create local variable price
+	public BigDecimal total; // create local variable total
+	public BigDecimal remainder; // create local variable remainder
 	public BillSlotObserverStub listener_1; // create listener
 	public CashIO cashIO; // create cash i/o
 	public CustomerIO customerIO; // create customer i/o
@@ -35,24 +39,27 @@ public class PayWithCash {
 	 * Main function for pay with cash
 	 */
 	public void main() throws OverloadException, DisabledException{
-	    BarcodedProduct item = SelfCheckoutMachineLogic.getBarcodedProductFromBarcode(barcode); // get the scanned item
-    	BigDecimal price = item.getPrice(); // get price of item
+	    item = SelfCheckoutMachineLogic.getBarcodedProductFromBarcode(barcode); // get the scanned item
+    	price = item.getPrice(); // get price of item
+    	total = items.augmentBillBalance(price); // get the total purchase value
     	
-    	BigDecimal total = items.augmentBillBalance(price); // get the total purchase value
-    	BigDecimal remainder = total; // initialize remaining amount to pay
-    	
-    	while(remainder > 0) {
+    	remainder = total; // initialize remaining amount to pay
+    	int compare = remainder.compareTo(BigDecimal.ZERO); // local variable to store comparison
+    	while(compare == 1) { // comparison returns 1 if remainder > 0
     		if(listener_1.getInsertedEvent()) { // if event is true, continue with procedure
     		    int insertedBill = bill.getValue(); // get value of the inserted bill
-    		    remainder = total - insertedBill; // reduces the remaining amount due by value of inserted bill
+    		    BigDecimal updateBill = BigDecimal.valueOf(insertedBill); // convert bill to BigDecimal type
+    		    remainder = total.subtract(updateBill); // reduces the remaining amount due by value of inserted bill
     		}
     		else {
     			billEjectedEvent = true; // indicate that bill was ejected
     		}
     	}
     	
-    	BigDecimal change = (remainder * -1); // set the change to be the remaining amount of cash (multiplied by -1 to remove the negative)
+    	BigDecimal num = new BigDecimal("1");
+    	BigDecimal change = remainder.multiply(num.negate()); // set the change to be the remaining amount of cash (multiplied by -1 to remove the negative)
     	cashIO.setChange(change); //set change using cashI/O
+    	
     	// Change will then be distributed by BillStorage
     	// Move on to Receipt Printer
 	}

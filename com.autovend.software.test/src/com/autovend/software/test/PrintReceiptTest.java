@@ -41,7 +41,7 @@ public class PrintReceiptTest {
   /*tests that an Empty Exception is thrown when trying to take receipt that has not been cut*/
   @Test
   public void testTakeReceipt_uncutReceipt() throws EmptyException, OverloadException {
-	scs.printer.addPaper(1);
+	//scs.printer.addPaper(1);
     pr.takeReceipt();
   }
   
@@ -53,6 +53,8 @@ public class PrintReceiptTest {
    pr.takeReceipt();
     
   }
+  
+  
 
   /*need to test printBillRecord() when implemented */ 
   /*need to test */

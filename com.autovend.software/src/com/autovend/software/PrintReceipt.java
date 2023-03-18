@@ -60,7 +60,6 @@ public class PrintReceipt implements ReceiptPrinterObserver{
 		
 		//Print the details of payment
 		
-		
 	}
 	
 	public void takeReceipt() throws EmptyException{

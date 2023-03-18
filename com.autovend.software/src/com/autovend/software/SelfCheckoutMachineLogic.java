@@ -190,6 +190,8 @@ public class SelfCheckoutMachineLogic{
 		printReceipt.takeReceipt();
 		customerDisplay.informCustomer("Your session is complete. Thank you for shopping with us.");
 		this.currentBill = null; //Null the current bill since the customer's session is over
+		
+		//TEST MERGE
 	}
 
 

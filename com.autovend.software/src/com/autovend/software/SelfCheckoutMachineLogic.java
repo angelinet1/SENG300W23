@@ -171,10 +171,6 @@ public class SelfCheckoutMachineLogic{
 		
 	}
 	
-	
-
-
-	
 	/**
 	 * Sets the machines lock state to newState. If the machine is unlocked set reason for lock to 0
 	 * @param newState
@@ -219,14 +215,35 @@ public class SelfCheckoutMachineLogic{
 		
 	}
 
+	/*
+	 * Setter for total
+	 */
+	public void setTotal(BigDecimal total) {
+		this.total = total;
+	}
+	
+
+	/*
+	 * Getter for total
+	 */
+	public BigDecimal getTotal() {
+		return this.total = total;
+	}
+	
+	/*
+	 * Getter for change
+	 */
+	public BigDecimal getChange() {
+		return this.change = change;
+	}
+	
+	
 	
 	/*
 	 * Main function for pay with cash
 	 */
 	public void payWithCash(){
-	    item = SelfCheckoutMachineLogic.getBarcodedProductFromBarcode(barcode); // get the scanned item
-    	price = item.getPrice(); // get price of item
-    	total = items.augmentBillBalance(price); // get the total purchase value
+    	total = items.getBillBalance(); // get the total purchase value
     	
     	remainder = total; // initialize remaining amount to pay
     	int compare = remainder.compareTo(BigDecimal.ZERO); // local variable to store comparison

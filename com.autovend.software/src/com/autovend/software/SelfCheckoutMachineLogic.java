@@ -7,6 +7,10 @@ import com.autovend.external.ProductDatabases;
 import com.autovend.products.BarcodedProduct;
 import com.autovend.products.Product;
 
+/**
+ * @author tyson
+ *
+ */
 public class SelfCheckoutMachineLogic{
 	
 	
@@ -71,6 +75,14 @@ public class SelfCheckoutMachineLogic{
 	}
 
 	
+	
+	
+	/**
+	 * 
+	 * 	Adds an item that is sold by unit to the currentBill, updating the weight and total balance
+	 * @param p: The product being added
+	 * @param weight: the weight of p in grams
+	 */
 	public void addItemPerUnit(Product p, double weight) {
 		
 		if(!machineLocked) {
@@ -82,7 +94,7 @@ public class SelfCheckoutMachineLogic{
 			currentBill.addProduct(p);
 		}
 		
-		currentBill.addProduct(p);
+		currentBill.augmentBillBalance(p.getPrice());
 		
 		// Update Expected Weight
 		currentBill.augmentExpectedWeight(weight);
@@ -100,6 +112,12 @@ public class SelfCheckoutMachineLogic{
 
 
 
+	/**
+	 * 	Takes a barecode and returns a barcoded product if it is a valid barcode
+	 * Otherwise returns null
+	 * @param barcode: The barcode of the Barcoded Product being looked for
+	 * @return If the barcode corossponds to one in the database, return that product otherwise return null
+	 */
 	public static BarcodedProduct getBarcodedProductFromBarcode(Barcode barcode) {
 		BarcodedProduct foundProduct = null;
 		
@@ -112,6 +130,9 @@ public class SelfCheckoutMachineLogic{
 	
 
 
+	/**
+	 * Tells the machine to wait until the customer chnages the weight of the scale
+	 */
 	private void askCustomerToPlaceItemGUI() {
 		
 		//Prompt GUI to tell customer
@@ -125,6 +146,10 @@ public class SelfCheckoutMachineLogic{
 
 
 	
+	/**
+	 * Sets the machines lock state to newState. If the machine is unlocked set reason for lock to 0
+	 * @param newState
+	 */
 	public void setMachineLock(boolean newState) {
 		
 		if(newState == false) {
@@ -133,10 +158,21 @@ public class SelfCheckoutMachineLogic{
 		this.machineLocked = newState;
 	}
 	
+	
+	/**
+	 * 
+	 * @return Returns a reference to the current bill the machine is processing
+	 */
 	public  TransactionReciept getCurrentBill() {
 		return currentBill;
 	}
 
+	/**
+	 * This function is called whenever there is a weightChanged detected by the scale.
+	 * If the machine is currently being locked becuase it expects a change it weight
+	 * It checks if it is what the billExpects the weight to be otherwise it will lock the machine
+	 * @param totalWeightInGrams: the total weight of the scale in grams.
+	 */
 	public void weightChanged(double totalWeightInGrams) {
 		switch(this.reasonForLock) {
 		

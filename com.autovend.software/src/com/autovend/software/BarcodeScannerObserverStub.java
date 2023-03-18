@@ -37,7 +37,9 @@ public class BarcodeScannerObserverStub implements BarcodeScannerObserver{
 	@Override
 	public void reactToBarcodeScannedEvent(BarcodeScanner barcodeScanner, Barcode barcode) {
 		BarcodedProduct bProduct = SelfCheckoutMachineLogic.getBarcodedProductFromBarcode(barcode);
-		scLogic.addItemPerUnit(bProduct, bProduct.getExpectedWeight());
+		if(bProduct != null) {
+			scLogic.addItemPerUnit(bProduct, bProduct.getExpectedWeight());
+		}
 		
 		
 	}

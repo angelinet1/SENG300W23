@@ -10,7 +10,7 @@ import com.autovend.products.Product;
 public class SelfCheckoutMachineLogic{
 	
 	
-	TransactionReciept currentBill;
+	TransactionReceipt currentBill;
 	public  boolean machineLocked = false;
 	
 	public ElectronicScaleObserverStub esObserver = new ElectronicScaleObserverStub(this);
@@ -77,7 +77,7 @@ public class SelfCheckoutMachineLogic{
 		
 		//Assuming it is available		
 		if(currentBill == null) {
-			currentBill = new TransactionReciept(p);
+			currentBill = new TransactionReceipt(p);
 		} else {
 			currentBill.addProduct(p);
 		}
@@ -133,7 +133,7 @@ public class SelfCheckoutMachineLogic{
 		this.machineLocked = newState;
 	}
 	
-	public  TransactionReciept getCurrentBill() {
+	public  TransactionReceipt getCurrentBill() {
 		return currentBill;
 	}
 

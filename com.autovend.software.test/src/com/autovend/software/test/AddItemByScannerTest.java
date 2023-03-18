@@ -7,6 +7,7 @@ package com.autovend.software.test;
 import static org.junit.Assert.*;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.Currency;
 
 import org.junit.After;

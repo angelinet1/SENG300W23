@@ -1,4 +1,3 @@
-
 /*
  *  @author: Angeline Tran (301369846),
  *  @author: Tyson Hartley (30117135), 
@@ -15,6 +14,8 @@ import java.util.Currency;
 
 import com.autovend.Barcode;
 import com.autovend.devices.BillSlot;
+import com.autovend.devices.EmptyException;
+import com.autovend.devices.OverloadException;
 import com.autovend.devices.BillDispenser;
 import com.autovend.Bill;
 import com.autovend.software.BillSlotObserverStub;

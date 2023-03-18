@@ -68,6 +68,7 @@ public class TransactionReceipt {
 
 	public void addProduct(Product p) {
 		currentBill.add(p);
+		p.getPrice();
 		
 	}
 	

@@ -52,8 +52,7 @@ public class PayWithCash {
     	}
     	
     	BigDecimal change = (remainder * -1); // set the change to be the remaining amount of cash (multiplied by -1 to remove the negative)
-    	cashIO.setChange(change); // set change using Cash I/O
-    	
+    	cashIO.setChange(change); //set change using cashI/O
     	// Change will then be distributed by BillStorage
     	// Move on to Receipt Printer
 	}

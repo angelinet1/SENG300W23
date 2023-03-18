@@ -230,12 +230,19 @@ public class SelfCheckoutMachineLogic{
         		    BigDecimal updateBill = BigDecimal.valueOf(insertedBill); // convert bill to BigDecimal type
         		    remainder = total.subtract(updateBill); // reduces the remaining amount due by value of inserted bill
         		    customerIO.setAmount(remainder); // update Customer IO with amount
+    			} else {
+    				// Prompt again for another bill because last one was invalid
+    				return;
     			}
+
     		}
     		else {
     			// Prompt for bill because no bill was inserted
     			return;
     		}
+    		// Reset events at end of the loop
+			billValidEvent = false;
+			billInsertedEvent = false;
     	}
     	
     	change = remainder.abs(); // set the change to be an absolute value

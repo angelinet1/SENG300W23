@@ -1,7 +1,11 @@
-/**
- *  @authors: Angeline Tran (301369846), Tyson Hartley (30117135), Jeongah Lee (30137463), Tyler Nguyen (30158563), Diane Doan (30052326), Nusyba Shifa (30162709)
+/*
+ *  @author: Angeline Tran (301369846),
+ *  @author: Tyson Hartley (30117135), 
+ *  @author: Jeongah Lee (30137463), 
+ *  @author: Tyler Nguyen (30158563), 
+ *  @author: Diane Doan (30052326), 
+ *  @author: Nusyba Shifa (30162709)
  */
-
 
 /*
  * Observer Stub for BarcodeScannerObserver

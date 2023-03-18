@@ -1,18 +1,45 @@
+/*
+ *  @author: Angeline Tran (301369846),
+ *  @author: Tyson Hartley (30117135), 
+ *  @author: Jeongah Lee (30137463), 
+ *  @author: Tyler Nguyen (30158563), 
+ *  @author: Diane Doan (30052326), 
+ *  @author: Nusyba Shifa (30162709)
+ */
+
 package com.autovend.software;
 
+import java.math.BigDecimal;
+import java.util.Currency;
+
 import com.autovend.Barcode;
-import com.autovend.devices.BarcodeScanner;
+import com.autovend.devices.BillSlot;
+import com.autovend.devices.BillDispenser;
+import com.autovend.Bill;
+import com.autovend.software.BillSlotObserverStub;
+import com.autovend.software.BillValidatorObserverStub;
+import com.autovend.products.BarcodedProduct;
 import com.autovend.devices.SelfCheckoutStation;
 import com.autovend.external.ProductDatabases;
-import com.autovend.products.BarcodedProduct;
 import com.autovend.products.Product;
 
-/**
- * @author tyson
- *
- */
 public class SelfCheckoutMachineLogic{
 	
+	public BillSlot billSlot; // create bill slot
+	public BillDispenser dispenser; // create bill dispenser
+	public Bill bill; // create a bill
+	public Barcode barcode; // create a barcode
+	public BarcodedProduct item; // create a barcoded product
+	public BigDecimal price; // create local variable price
+	public BigDecimal total; // create local variable total
+	public BigDecimal remainder; // create local variable remainder
+	public BigDecimal change; // create local variable change
+	public BillSlotObserverStub listener_1; // create listener
+	public CashIO cashIO; // create cash i/o
+	public CustomerIO customerIO; // create customer i/o
+	public TransactionReceipt items; // create items from the purchase
+	public boolean billInsertedEvent = false;
+	public boolean billValidEvent = false;
 	
 	TransactionReceipt currentBill;
 	public  boolean machineLocked = false;
@@ -105,11 +132,6 @@ public class SelfCheckoutMachineLogic{
 		}
 	}
 	
-	
-
-
-
-
 
 
 	/**
@@ -126,7 +148,7 @@ public class SelfCheckoutMachineLogic{
 				};
 		
 		return foundProduct;
-}
+	}
 	
 
 
@@ -190,6 +212,37 @@ public class SelfCheckoutMachineLogic{
 		
 	}
 
-
+	
+	/*
+	 * Main function for pay with cash
+	 */
+	public void payWithCash(){
+	    item = SelfCheckoutMachineLogic.getBarcodedProductFromBarcode(barcode); // get the scanned item
+    	price = item.getPrice(); // get price of item
+    	total = items.augmentBillBalance(price); // get the total purchase value
+    	
+    	remainder = total; // initialize remaining amount to pay
+    	int compare = remainder.compareTo(BigDecimal.ZERO); // local variable to store comparison
+    	while(compare == 1) { // comparison returns 1 if remainder > 0
+    		if(listener_1.getInsertedEvent()) { // if event is true, continue with procedure
+    			if(billValidEvent){
+    				int insertedBill = bill.getValue(); // get value of the inserted bill
+        		    BigDecimal updateBill = BigDecimal.valueOf(insertedBill); // convert bill to BigDecimal type
+        		    remainder = total.subtract(updateBill); // reduces the remaining amount due by value of inserted bill
+        		    customerIO.setAmount(remainder); // update Customer IO with amount
+    			}
+    		}
+    		else {
+    			// Prompt for bill because no bill was inserted
+    			return;
+    		}
+    	}
+    	
+    	change = remainder.abs(); // set the change to be an absolute value
+    	cashIO.setChange(change); //set change using cashI/O
+    	
+    	// Change will then be distributed by BillStorage
+    	// Move on to Receipt Printer
+	}
 
 }

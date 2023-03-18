@@ -43,5 +43,13 @@ public class BillSlotObserverStub implements BillSlotObserver{
 		billRemovedEvent = true;
 		
 	}
+	
+	public boolean getInsertedEvent() {
+		return billInsertedEvent;
+	}
+	
+	public void waitForBill() {
+		this.billInsertedEvent = false;
+	}
 
 }

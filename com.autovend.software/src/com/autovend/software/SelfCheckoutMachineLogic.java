@@ -174,6 +174,7 @@ public class SelfCheckoutMachineLogic{
 	
 	/**
 	 * Sets the machines lock state to newState. If the machine is unlocked set reason for lock to 0
+	 * 
 	 * @param newState
 	 */
 	public void setMachineLock(boolean newState) {

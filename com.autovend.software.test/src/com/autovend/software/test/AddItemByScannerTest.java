@@ -83,12 +83,13 @@ public class AddItemByScannerTest {
 	}
 	
 	/**
-	 * Tests when a scanned item is added and machine is unlocked.
+	 * Tests when two scanned items are added.
 	 */
 	@Test 
-	public void addItemUnlocked() {
-		machineLogic.setMachineLock(false);
+	public void addItem() {
+		machineLogic.addItemPerUnit(milk_product, 20);
 		machineLogic.addItemPerUnit(bread_product, 5);
+		
 	}
 	
 	/**

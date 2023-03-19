@@ -65,9 +65,9 @@ public class SelfCheckoutMachineLogic{
 			listOfLockCodes[i] = i-1;
 		}
 		
-		scStation.scale.register(esObserver);
-		scStation.scale.disable();
-		scStation.scale.enable();
+		scStation.baggingArea.register(esObserver);
+		scStation.baggingArea.disable();
+		scStation.baggingArea.enable();
 		
 		scStation.handheldScanner.register(bsObserver);
 		scStation.handheldScanner.disable();

@@ -1,0 +1,1048 @@
+commit b8831d590fa7b97eff975a67723afc96fbf3bb62
+Author: Angeline Tran <angelinenhanaitran@gmail.com>
+Date:   Sat Mar 18 23:31:14 2023 -0600
+
+    Final commit
+
+commit 7ca7a8ef12c392d241dccadaea1cf0fbf9982233
+Author: Angeline Tran <angelinenhanaitran@gmail.com>
+Date:   Sat Mar 18 23:08:31 2023 -0600
+
+    Update Tests
+
+commit e0566e93c8af7de6b5c1ddf380730381d575ebb3
+Author: Angeline Tran <angelinenhanaitran@gmail.com>
+Date:   Sat Mar 18 22:59:16 2023 -0600
+
+    Update paywithcash
+
+commit 71dda84a40ead3d059c06e75b2fd91a95188dfbc
+Author: Angeline Tran <angelinenhanaitran@gmail.com>
+Date:   Sat Mar 18 22:27:04 2023 -0600
+
+    Added IO initializations
+
+commit ecf38bb505aaab29d81fd2800c66d1ed0dcf8524
+Author: Tyson-Hartley <127632992+Tyson-Hartley@users.noreply.github.com>
+Date:   Sat Mar 18 21:45:47 2023 -0600
+
+    FixedAngerChanges
+
+commit 1c9bcb344102b06f8083e6fc0fcda15139f99cc2
+Merge: f07588c 86eabe2
+Author: Tyson-Hartley <127632992+Tyson-Hartley@users.noreply.github.com>
+Date:   Sat Mar 18 21:44:25 2023 -0600
+
+    Merge branch 'main' of https://github.com/angelinet1/SENG300W23
+
+commit f07588c9c87ad5d2646423367aa41b189c5b7c79
+Author: Tyson-Hartley <127632992+Tyson-Hartley@users.noreply.github.com>
+Date:   Sat Mar 18 21:44:05 2023 -0600
+
+    noBillsInsertedWorking
+
+commit 86eabe2906fbf08de172d883d48050bc8e2e74e1
+Author: Angeline Tran <angelinenhanaitran@gmail.com>
+Date:   Sat Mar 18 21:38:42 2023 -0600
+
+    Added setter for IOs
+
+commit 3a0d28063de165fd28956b25c7fc374ee4636335
+Author: Tyson-Hartley <127632992+Tyson-Hartley@users.noreply.github.com>
+Date:   Sat Mar 18 21:21:10 2023 -0600
+
+    BillValidator
+
+commit eea5239a205b391f57b25d02917b71ee8ea504c2
+Author: Angeline Tran <angelinenhanaitran@gmail.com>
+Date:   Sat Mar 18 21:14:40 2023 -0600
+
+    Updated paywithcash test
+
+commit c75a94fab60bd962853eb992550793f070adf95f
+Author: Tyson-Hartley <127632992+Tyson-Hartley@users.noreply.github.com>
+Date:   Sat Mar 18 21:01:47 2023 -0600
+
+    Allowed ObserStuds to edit logic bools
+
+commit 4dc18cdabfa0558291b0a746e7bafa4bc91ba66a
+Author: Tyson-Hartley <127632992+Tyson-Hartley@users.noreply.github.com>
+Date:   Sat Mar 18 20:57:17 2023 -0600
+
+    BillInsteredEventFixed
+
+commit 28044c009768eccc1f9ed4bb46448b80995356ae
+Merge: b7df40b 6e87854
+Author: Tyson-Hartley <127632992+Tyson-Hartley@users.noreply.github.com>
+Date:   Sat Mar 18 20:47:08 2023 -0600
+
+    Merge branch 'main' of https://github.com/angelinet1/SENG300W23
+
+commit b7df40b1c05a04a1a75f16d71f2a6d72a4adfce0
+Author: Tyson-Hartley <127632992+Tyson-Hartley@users.noreply.github.com>
+Date:   Sat Mar 18 20:46:58 2023 -0600
+
+    No Longer Failing Tsts
+
+commit 6e878540453b4b172a44ba298365aeb679747217
+Author: Angeline Tran <angelinenhanaitran@gmail.com>
+Date:   Sat Mar 18 20:41:06 2023 -0600
+
+    Merge branch 'main' of http://github.com/angelinet1/SENG300W23 into main
+
+commit da027383b759e21d80517d269be3001c638856d0
+Merge: 6baf802 137a6ca
+Author: Angeline Tran <angelinenhanaitran@gmail.com>
+Date:   Sat Mar 18 20:40:59 2023 -0600
+
+    Merge branch 'main' of http://github.com/angelinet1/SENG300W23 into main
+
+commit 6baf802d91356b033bc11617c1c31f28d73d0df3
+Author: Angeline Tran <angelinenhanaitran@gmail.com>
+Date:   Sat Mar 18 20:40:14 2023 -0600
+
+    Update
+
+commit 137a6caba97fe3427e18328f113ec347b876afd5
+Author: dianedoan <Dianedd419@hotmail.com>
+Date:   Sat Mar 18 20:39:49 2023 -0600
+
+    made currentBill public so that AddItemByScanningTest works
+
+commit 945a8a0817ba1f912814a774857791559edb1491
+Author: Angeline Tran <angelinenhanaitran@gmail.com>
+Date:   Sat Mar 18 20:37:34 2023 -0600
+
+    Merge branch 'main' of http://github.com/angelinet1/SENG300W23 into main
+
+commit 31a64fe554ce9ee1d546f14d4591329f0f832ca0
+Merge: 9c51e8a f2ccbf6
+Author: Angeline Tran <angelinenhanaitran@gmail.com>
+Date:   Sat Mar 18 20:36:49 2023 -0600
+
+    Merge branch 'main' of http://github.com/angelinet1/SENG300W23 into main
+
+commit f2ccbf6e7068b377241b44bd74e987f837940b1f
+Merge: 7a9a128 7bbfbe9
+Author: Tyson-Hartley <127632992+Tyson-Hartley@users.noreply.github.com>
+Date:   Sat Mar 18 20:36:25 2023 -0600
+
+    Merge branch 'main' of https://github.com/angelinet1/SENG300W23
+
+commit 9c51e8aeaf8b46a20bb7a99cc5db2251947b6455
+Author: Angeline Tran <angelinenhanaitran@gmail.com>
+Date:   Sat Mar 18 20:36:24 2023 -0600
+
+    Added another test
+
+commit 7a9a128b43c8041d033891649acc0a17b4b03bf6
+Author: Tyson-Hartley <127632992+Tyson-Hartley@users.noreply.github.com>
+Date:   Sat Mar 18 20:36:14 2023 -0600
+
+    getBillBalanceWorksProperly
+
+commit 7bbfbe934ec38c4e8dc5d47e5ecf22ded49a7a1b
+Author: dianedoan <Dianedd419@hotmail.com>
+Date:   Sat Mar 18 20:36:04 2023 -0600
+
+    added new tests
+
+commit d43a0a21c17480702c46ca3ea87b31f1c2fd3df7
+Author: dianedoan <Dianedd419@hotmail.com>
+Date:   Sat Mar 18 20:30:01 2023 -0600
+
+    added new tests for AddItemByScanning
+
+commit c750689592623ce13a2b8751a8bb107d6acfe478
+Author: Tyson-Hartley <127632992+Tyson-Hartley@users.noreply.github.com>
+Date:   Sat Mar 18 20:18:53 2023 -0600
+
+    UpdatesBillTotalNow
+
+commit 3dadc36f511fa3ed51d6fa9155f96990c46309e0
+Author: Tyson-Hartley <127632992+Tyson-Hartley@users.noreply.github.com>
+Date:   Sat Mar 18 20:14:09 2023 -0600
+
+    Revert "Made AddItemPerUnit Update Total Properly"
+    
+    This reverts commit 369ff46c76eeb5349b089cebe9ae6edf73347e31.
+
+commit 2809511835df04e3ebfc164b705df3725b298ea7
+Author: Tyson-Hartley <127632992+Tyson-Hartley@users.noreply.github.com>
+Date:   Sat Mar 18 20:14:01 2023 -0600
+
+    Revert "Merge branch 'main' of https://github.com/angelinet1/SENG300W23"
+    
+    This reverts commit af1b847930f94627b5ae9864f2186b6657597cde, reversing
+    changes made to 369ff46c76eeb5349b089cebe9ae6edf73347e31.
+
+commit af1b847930f94627b5ae9864f2186b6657597cde
+Merge: 369ff46 89b95ea
+Author: Tyson-Hartley <127632992+Tyson-Hartley@users.noreply.github.com>
+Date:   Sat Mar 18 20:12:27 2023 -0600
+
+    Merge branch 'main' of https://github.com/angelinet1/SENG300W23
+
+commit 369ff46c76eeb5349b089cebe9ae6edf73347e31
+Author: Tyson-Hartley <127632992+Tyson-Hartley@users.noreply.github.com>
+Date:   Sat Mar 18 20:12:12 2023 -0600
+
+    Made AddItemPerUnit Update Total Properly
+
+commit 89b95ea32c2f2fd6ef7fd846760656cb67eaf46c
+Author: Angeline Tran <angelinenhanaitran@gmail.com>
+Date:   Sat Mar 18 19:57:36 2023 -0600
+
+    Update PayWithCash Test
+
+commit 7ce7551c48434479b7f417a675911cca8c0bd048
+Merge: 0bf4e43 b13773b
+Author: Tyson-Hartley <127632992+Tyson-Hartley@users.noreply.github.com>
+Date:   Sat Mar 18 19:40:05 2023 -0600
+
+    Merge branch 'main' of https://github.com/angelinet1/SENG300W23
+
+commit 0bf4e4304844a7d481996a02131ee13faff86b70
+Author: Tyson-Hartley <127632992+Tyson-Hartley@users.noreply.github.com>
+Date:   Sat Mar 18 19:40:02 2023 -0600
+
+    AddedItemToStartup
+
+commit b13773b79d7e7357beaaee21b99d8ed58f6eda7e
+Author: Nusyba Shifa <84158676+nusyba23@users.noreply.github.com>
+Date:   Sat Mar 18 19:22:42 2023 -0600
+
+    Update PayWithCashTest.java
+    
+    created new bill.
+
+commit 21e6c8b0f21a71e174a9616f603c0f12812434f6
+Author: Nusyba Shifa <84158676+nusyba23@users.noreply.github.com>
+Date:   Sat Mar 18 19:16:28 2023 -0600
+
+    Update PayWithCashTest.java
+
+commit 4bbd1ee65414c8cd9ada1d8bd26a3db4a05ea944
+Author: Tyson-Hartley <127632992+Tyson-Hartley@users.noreply.github.com>
+Date:   Sat Mar 18 19:14:32 2023 -0600
+
+    New Error
+
+commit 08378b2862059813f30bb92c3675539d4480c4f7
+Merge: cc537fd 9e98386
+Author: Tyson-Hartley <127632992+Tyson-Hartley@users.noreply.github.com>
+Date:   Sat Mar 18 18:54:41 2023 -0600
+
+    Merge pull request #16 from angelinet1/AddItemByScanner
+    
+    Add item by scanner
+
+commit 9e98386df31f8d09490b07b8eac77b9187bc3fdf
+Merge: 965add8 cc537fd
+Author: Tyson-Hartley <127632992+Tyson-Hartley@users.noreply.github.com>
+Date:   Sat Mar 18 18:53:49 2023 -0600
+
+    Merge branch 'main' into AddItemByScanner
+
+commit cc537fd2b15b88fa0f05662e7a7c7aed0abb6475
+Author: anna-jeongah <annajlee28@gmail.com>
+Date:   Sat Mar 18 18:31:49 2023 -0600
+
+    Added for signalToPrintReceipt to be called when payment is finished.
+
+commit 965add8c48dcfa6aeac20be12919dabf12a5f93d
+Author: Tyson-Hartley <127632992+Tyson-Hartley@users.noreply.github.com>
+Date:   Sat Mar 18 18:26:47 2023 -0600
+
+    Revert "Ingonore Me"
+    
+    This reverts commit 63191ba6082bf8fa32713509cb4dba2328cd3022.
+
+commit cb080212d851ba72065a88ab1ae8d2a1b12d5e60
+Author: Tyson-Hartley <127632992+Tyson-Hartley@users.noreply.github.com>
+Date:   Sat Mar 18 18:26:45 2023 -0600
+
+    Revert "MoreComits"
+    
+    This reverts commit 562ccc7226b2b53faf6f39c90f23ec4bcfacdf6b.
+
+commit e8a85b1bfb9983c38a44c26bf9e3e4021765f904
+Author: Tyson-Hartley <127632992+Tyson-Hartley@users.noreply.github.com>
+Date:   Sat Mar 18 18:26:40 2023 -0600
+
+    Revert "MoreComits"
+    
+    This reverts commit da4fda97a408c471bc37dadb8661bd3ea2c73d9c.
+
+commit da4fda97a408c471bc37dadb8661bd3ea2c73d9c
+Author: Tyson-Hartley <127632992+Tyson-Hartley@users.noreply.github.com>
+Date:   Sat Mar 18 18:23:56 2023 -0600
+
+    MoreComits
+
+commit 562ccc7226b2b53faf6f39c90f23ec4bcfacdf6b
+Author: Tyson-Hartley <127632992+Tyson-Hartley@users.noreply.github.com>
+Date:   Sat Mar 18 18:23:10 2023 -0600
+
+    MoreComits
+
+commit 63191ba6082bf8fa32713509cb4dba2328cd3022
+Author: Tyson-Hartley <127632992+Tyson-Hartley@users.noreply.github.com>
+Date:   Sat Mar 18 18:19:46 2023 -0600
+
+    Ingonore Me
+
+commit fc604de5f108edf8c9be1aca1a1edfe6de8f6bc4
+Author: Tyson-Hartley <127632992+Tyson-Hartley@users.noreply.github.com>
+Date:   Sat Mar 18 18:18:10 2023 -0600
+
+    Create .gitignore
+
+commit bcd078ba858430e4763465efb99e97910d7f1f13
+Merge: 55656c3 e9ed9de
+Author: tylernsocial <tylernsocial@gmail.com>
+Date:   Sat Mar 18 18:14:30 2023 -0600
+
+    Merge branch 'main' of https://github.com/angelinet1/SENG300W23
+    
+    # Conflicts:
+    #       com.autovend.software/bin/com/autovend/software/PrintReceipt.class
+    #       com.autovend.software/bin/com/autovend/software/SelfCheckoutMachineLogic.class
+
+commit 55656c36979be033f4335a4224df59ce77cf1d33
+Author: tylernsocial <tylernsocial@gmail.com>
+Date:   Sat Mar 18 18:06:13 2023 -0600
+
+    finish PrintReceiptTest, 100% coverage
+
+commit 3e77cd79f20eebee9568faba9124cc8fb62bc44a
+Author: Tyson-Hartley <127632992+Tyson-Hartley@users.noreply.github.com>
+Date:   Sat Mar 18 18:02:11 2023 -0600
+
+    Weight after Adding Item
+    
+    Made it so you have to add weight to bagging area after adding an item
+
+commit dbcd1281a8153ba8a592851da2aaef568962f359
+Author: Tyson-Hartley <127632992+Tyson-Hartley@users.noreply.github.com>
+Date:   Sat Mar 18 17:41:43 2023 -0600
+
+    Making Machine Accept Weight Changes
+
+commit e9ed9decb20f4c64f6ab76d61eea602937bb7c6c
+Merge: 9e2aa14 2ca28b8
+Author: Angeline Tran <angelinenhanaitran@gmail.com>
+Date:   Sat Mar 18 17:33:31 2023 -0600
+
+    Merge branch 'main' of http://github.com/angelinet1/SENG300W23 into main
+
+commit 9e2aa141810d750189d6f4a62747fc548fdafdb8
+Author: Angeline Tran <angelinenhanaitran@gmail.com>
+Date:   Sat Mar 18 17:33:10 2023 -0600
+
+    Updated
+
+commit 2ca28b838c54b6ef149e29b8967a51993a6e785c
+Merge: b6cb139 f517a38
+Author: Angeline Tran <angelinenhanaitran@gmail.com>
+Date:   Sat Mar 18 17:30:58 2023 -0600
+
+    Merge branch 'AddItemByScanner'
+
+commit f517a38766417ae5701ff9c13aca4374178c7f5b
+Author: dianedoan <Dianedd419@hotmail.com>
+Date:   Sat Mar 18 16:46:56 2023 -0600
+
+    updated test
+
+commit 3656c5348ac636a06d60c89e0ccd75d564c67561
+Author: Tyson-Hartley <127632992+Tyson-Hartley@users.noreply.github.com>
+Date:   Sat Mar 18 16:37:39 2023 -0600
+
+    GitIgnore Update
+
+commit 2afe33040fa37e2c5cf2ac23a57337961e14b16b
+Author: Tyson-Hartley <127632992+Tyson-Hartley@users.noreply.github.com>
+Date:   Sat Mar 18 16:33:49 2023 -0600
+
+    Fixed Construcot For TransRecipt
+
+commit 86358bc8ba2dc8bece792e67f0dfd2f7466040d5
+Author: Tyson-Hartley <127632992+Tyson-Hartley@users.noreply.github.com>
+Date:   Sat Mar 18 16:32:47 2023 -0600
+
+    Lots Of Binary File Changes
+
+commit 223ff4690c6f3f4041ddd5c585be557ea07d2f8a
+Merge: 12e04a1 639dc37
+Author: Tyson-Hartley <127632992+Tyson-Hartley@users.noreply.github.com>
+Date:   Sat Mar 18 16:30:39 2023 -0600
+
+    Merge branch 'AddItemByScanner' of https://github.com/angelinet1/SENG300W23 into AddItemByScanner
+
+commit 12e04a13931f4eb2f00db4f7db9bc01dbbaecca9
+Author: Tyson-Hartley <127632992+Tyson-Hartley@users.noreply.github.com>
+Date:   Sat Mar 18 16:28:28 2023 -0600
+
+    Changed Bill Initalization to initalize total
+
+commit b6cb139ee67629b87d674ba6fe0df2bb551aa1cf
+Author: Angeline Tran <angelinenhanaitran@gmail.com>
+Date:   Sat Mar 18 16:27:49 2023 -0600
+
+    Fixed build path
+
+commit 639dc37c6b1cad02b82b8998bd0b200887bff6ab
+Author: dianedoan <Dianedd419@hotmail.com>
+Date:   Sat Mar 18 16:25:12 2023 -0600
+
+    changed jre 17 -> 19
+
+commit bca06038cd6be37ce8d5d3678171be870c848cd9
+Author: Angeline Tran <angelinenhanaitran@gmail.com>
+Date:   Sat Mar 18 16:24:55 2023 -0600
+
+    Fix SelfCheckoutMachineLogic
+
+commit be26dd58b5b621c73d097e03b631641e994fe1d4
+Author: dianedoan <Dianedd419@hotmail.com>
+Date:   Sat Mar 18 16:21:54 2023 -0600
+
+    made some minor changes
+
+commit 6e4296b50baf2606212de66b680ffd10ec568fa0
+Merge: 398b930 dd66019
+Author: Angeline Tran <angelinenhanaitran@gmail.com>
+Date:   Sat Mar 18 16:18:53 2023 -0600
+
+    Merge branch 'main' into PayWithCashUpdate
+
+commit 398b93078ef2f738e7ce23fa9aa40487ddea6a85
+Merge: 29f4675 bae5407
+Author: Angeline Tran <angelinenhanaitran@gmail.com>
+Date:   Sat Mar 18 16:10:36 2023 -0600
+
+    Merge branch 'PayWithCashUpdate' into main
+
+commit dd660199ba715707e1e2338d75f504d6c8791eb1
+Author: dianedoan <Dianedd419@hotmail.com>
+Date:   Sat Mar 18 16:06:29 2023 -0600
+
+    made some minor changes
+
+commit 29f46753017c81dfe410276c517408a111c25c83
+Author: Angeline Tran <angelinenhanaitran@gmail.com>
+Date:   Sat Mar 18 16:02:50 2023 -0600
+
+    Added tests to PayWithCash
+
+commit 6cec3945e83cf1f1a527c5081f8c5e4ecf41269b
+Merge: c6d2e08 dc21da5
+Author: anna-jeongah <100656227+anna-jeongah@users.noreply.github.com>
+Date:   Sat Mar 18 15:25:14 2023 -0600
+
+    Merge pull request #12 from angelinet1/receiptPrinterTest2
+    
+    Receipt printer test2
+
+commit dc21da5a4a3a704d7f4ca99feba84b4962364258
+Author: anna-jeongah <annajlee28@gmail.com>
+Date:   Sat Mar 18 15:22:50 2023 -0600
+
+    Merged logic class from receiptPrinterTest2 branch to logic class in
+    main.
+
+commit e312c5a6122c03e8cbdd6e62353b7b3593f857f8
+Author: anna-jeongah <annajlee28@gmail.com>
+Date:   Sat Mar 18 15:14:10 2023 -0600
+
+    Testing merge
+
+commit 188e0316ff4a2fd896b5e66d9ab890db167c1414
+Merge: 382d43e c6d2e08
+Author: anna-jeongah <annajlee28@gmail.com>
+Date:   Sat Mar 18 14:55:19 2023 -0600
+
+    Merge branch 'main' into receiptPrinterTest2
+
+commit 382d43e4c291542140b74975d475d81694705113
+Author: anna-jeongah <annajlee28@gmail.com>
+Date:   Sat Mar 18 14:52:22 2023 -0600
+
+    Changed some implementation for printing receipt. Added tests for
+    receipt printer.
+
+commit c6d2e086dc4c1328a9e794c95d51a84a4f2f9f14
+Author: Angeline Tran <72670634+angelinet1@users.noreply.github.com>
+Date:   Sat Mar 18 13:51:52 2023 -0600
+
+    Update README.md
+
+commit 7d72e3b2546e1ad95f1b55e26d6e9a87bd6604ef
+Author: Angeline Tran <angelinenhanaitran@gmail.com>
+Date:   Sat Mar 18 13:50:56 2023 -0600
+
+    Added comments
+
+commit f3a6c5e6a7b6221ffd8cde55175294226c89dd48
+Author: Angeline Tran <angelinenhanaitran@gmail.com>
+Date:   Sat Mar 18 13:49:06 2023 -0600
+
+    Fixed loop
+
+commit 54ab094cc252a78e407fd0a23463f842a13f7818
+Author: Angeline Tran <angelinenhanaitran@gmail.com>
+Date:   Sat Mar 18 13:45:44 2023 -0600
+
+    Finished PayWithCash
+
+commit 613b3da6a46b0ed81900ea9e962c849987cdaafe
+Author: Angeline Tran <angelinenhanaitran@gmail.com>
+Date:   Sat Mar 18 13:18:09 2023 -0600
+
+    Fix typos
+
+commit cc515e8b668ec8fc067906d9578d8160a84b0936
+Merge: 8ffb070 2129522
+Author: Angeline Tran <angelinenhanaitran@gmail.com>
+Date:   Sat Mar 18 12:57:11 2023 -0600
+
+    Merge branch 'main' of http://github.com/angelinet1/SENG300W23 into main
+
+commit 8ffb070118f1f1430088dfc5265274d446c2ae40
+Author: Angeline Tran <angelinenhanaitran@gmail.com>
+Date:   Sat Mar 18 12:52:41 2023 -0600
+
+    Fix typos
+
+commit bae540796c0ff33df0e12dc8bb335c9ca8041b80
+Author: Angeline Tran <angelinenhanaitran@gmail.com>
+Date:   Sat Mar 18 12:52:32 2023 -0600
+
+    Fix typos
+
+commit 21295225643432c35c20fd15381d8b654ddfefde
+Merge: e963dcc 72be4fb
+Author: Angeline Tran <72670634+angelinet1@users.noreply.github.com>
+Date:   Sat Mar 18 12:49:47 2023 -0600
+
+    Merge pull request #11 from angelinet1/PayWithCashUpdate
+    
+    Pay with cash update
+
+commit 72be4fb3bc2965e3ed2c7543f5fae5fb328aaaf2
+Merge: d30e5ce e963dcc
+Author: Angeline Tran <angelinenhanaitran@gmail.com>
+Date:   Sat Mar 18 12:49:11 2023 -0600
+
+    Merge branch 'main' of http://github.com/angelinet1/SENG300W23 into
+    PayWithCashUpdate
+
+commit d30e5ce1a7f73d7fd7a13be6e4eb182a2f5a288d
+Author: Angeline Tran <angelinenhanaitran@gmail.com>
+Date:   Sat Mar 18 12:48:34 2023 -0600
+
+    Updated PayWithCash and its test
+
+commit e963dcc947f334882866d357fca9fd7ebc3b1cdc
+Merge: 0e8d681 754c699
+Author: Angeline Tran <angelinenhanaitran@gmail.com>
+Date:   Sat Mar 18 11:10:11 2023 -0600
+
+    Merge branch 'AddItemByScanner'
+
+commit 754c69999dacdf0fc01f88e1ecd644b62c5d1198
+Author: Tyson-Hartley <127632992+Tyson-Hartley@users.noreply.github.com>
+Date:   Sat Mar 18 10:56:13 2023 -0600
+
+    Added Comments To SelfCheckoutMachineLogic
+
+commit e54c56e9f170a3de422e79d50d1e23515528aabb
+Author: anna-jeongah <annajlee28@gmail.com>
+Date:   Sat Mar 18 10:32:01 2023 -0600
+
+    Pushing all the files
+
+commit 0e8d68150b6198001e5428616855ac783aee8efd
+Merge: 2aba75f 38fa4a8
+Author: anna-jeongah <100656227+anna-jeongah@users.noreply.github.com>
+Date:   Sat Mar 18 08:35:16 2023 -0600
+
+    Merge pull request #9 from angelinet1/PrintReceiptController
+    
+    Added methods to scsLogic class and PrintReceipt class
+
+commit 38fa4a8c4c8120b348c2c921088edcda341b163a
+Author: anna-jeongah <annajlee28@gmail.com>
+Date:   Sat Mar 18 08:30:34 2023 -0600
+
+    Added methods to scsLogic class and PrintReceipt class. Added new
+    classes (AttendantIO and CustomerDisplayIO).
+
+commit 2aba75fea313957d3e3cb28adc7d8facb5c5d1f7
+Author: nusyb <nusyb@LAPTOP-0HQP2U0T>
+Date:   Sat Mar 18 05:02:13 2023 -0600
+
+    tear down objects to null.
+
+commit b1193a4fb5eb470d13d0246b5a76d21fc642e605
+Author: nusyb <nusyb@LAPTOP-0HQP2U0T>
+Date:   Sat Mar 18 04:54:55 2023 -0600
+
+    worked on some BigDecimal
+
+commit be111de893e71d2ecbaf3b684b9b0092e6b3cc99
+Author: nusyb <nusyb@LAPTOP-0HQP2U0T>
+Date:   Sat Mar 18 04:05:33 2023 -0600
+
+    Made new test cases
+
+commit 36b7356f1696fcecb4b6a03e08669a48cc30fe01
+Author: Angeline Tran <angelinenhanaitran@gmail.com>
+Date:   Fri Mar 17 22:47:59 2023 -0600
+
+    Added comments
+
+commit 0d809af1ec3ca2a14565424c1612626d0eefb14d
+Merge: f92f33c 544d326
+Author: Angeline Tran <angelinenhanaitran@gmail.com>
+Date:   Fri Mar 17 22:25:51 2023 -0600
+
+    Merge branch 'PayWithCash'
+
+commit f92f33c6ca60b05508d2b0a4315c160f2443b5e8
+Author: Angeline Tran <angelinenhanaitran@gmail.com>
+Date:   Fri Mar 17 21:49:54 2023 -0600
+
+    Merge branch 'main' of http://github.com/angelinet1/SENG300W23 into
+    PayWithCash
+
+commit fc748afdd23823032b447507be492e14e03a087b
+Merge: 331e2e0 eeba6e8
+Author: Angeline Tran <angelinenhanaitran@gmail.com>
+Date:   Fri Mar 17 21:46:21 2023 -0600
+
+    Merge branch 'main' of http://github.com/angelinet1/SENG300W23 into main
+
+commit 544d3264f80c63edbb116768f9c56bc3166643f5
+Author: Angeline Tran <angelinenhanaitran@gmail.com>
+Date:   Fri Mar 17 21:45:30 2023 -0600
+
+    Updated Java version
+
+commit 58da9006a573517dab9ca6a61f6437c60ebc0950
+Author: Angeline Tran <angelinenhanaitran@gmail.com>
+Date:   Fri Mar 17 21:34:03 2023 -0600
+
+    Updated PayWithCash file, added IO files
+
+commit eeba6e8fc66f5d8ae3db9d9ebdbbf4937141b530
+Author: tylernsocial <tylernsocial@gmail.com>
+Date:   Fri Mar 17 21:29:14 2023 -0600
+
+    updated tests
+
+commit 4b0b9889aabe9256be8d5d57dc51a81d12c827b6
+Author: dianedoan <Dianedd419@hotmail.com>
+Date:   Fri Mar 17 21:16:51 2023 -0600
+
+    getBarcodedProductFromBarcode() 100% coverage, addItemPerUnit() 85.7%
+
+commit fa56551dc29690a5c7cc19a9bc74ad175618ea89
+Author: dianedoan <Dianedd419@hotmail.com>
+Date:   Fri Mar 17 21:11:01 2023 -0600
+
+    getBarcodedProductFromBarcode() 100% coverage, addItemPerUnit() 85.7%
+    coverage
+
+commit e961a940742554be224636c703f369fc1c9c4112
+Author: dianedoan <Dianedd419@hotmail.com>
+Date:   Fri Mar 17 19:24:34 2023 -0600
+
+    finished testing for getBarcodedProductFromBarcode()
+
+commit be5b2696b0f6c62011aeed63c18b189c1a1f4d9f
+Author: Angeline Tran <angelinenhanaitran@gmail.com>
+Date:   Fri Mar 17 16:35:44 2023 -0600
+
+    Merge branch 'main' of http://github.com/angelinet1/SENG300W23 into
+    PayWithCash
+
+commit 630a171c487623ae33b3c6fe0cf35493bc1de0d0
+Merge: 57b5e92 43d2028
+Author: Angeline Tran <angelinenhanaitran@gmail.com>
+Date:   Fri Mar 17 16:34:35 2023 -0600
+
+    Merge branch 'main' of http://github.com/angelinet1/SENG300W23 into PayWithCash
+
+commit 43d2028f868ebcdc36fe521eae55f1d40d7fecb2
+Merge: dec207a 73b2222
+Author: Tyson-Hartley <127632992+Tyson-Hartley@users.noreply.github.com>
+Date:   Fri Mar 17 16:33:13 2023 -0600
+
+    Merge pull request #7 from angelinet1/AddItemByScanner
+    
+    Add item by scanner
+
+commit 73b2222b575ff8e49d6c0f2bd7ab76db89c99105
+Author: Tyson-Hartley <127632992+Tyson-Hartley@users.noreply.github.com>
+Date:   Fri Mar 17 16:31:40 2023 -0600
+
+    AddedLogicForScaleChangingWeightr
+
+commit fca8559fd503fd5b3d73019f05243f113738f1df
+Merge: dec207a 1f440f5
+Author: Angeline Tran <angelinenhanaitran@gmail.com>
+Date:   Fri Mar 17 16:26:13 2023 -0600
+
+    Merge branch 'AddItemByScanner'
+
+commit 57b5e9215e51bb41f371ed2dabc623f0bb5583c4
+Author: Angeline Tran <angelinenhanaitran@gmail.com>
+Date:   Fri Mar 17 16:22:01 2023 -0600
+
+    Added statement to wait for bill to be inserted with listener
+
+commit 1f440f5c0f079dd52b181eaaa3772dd0432d56e6
+Author: Tyson-Hartley <127632992+Tyson-Hartley@users.noreply.github.com>
+Date:   Fri Mar 17 16:21:53 2023 -0600
+
+    Added non-functioning Electronic Scale Observer Stub
+
+commit 592f7012ee010ddde3a76833ce41e0a3d02b36e2
+Author: Tyson-Hartley <127632992+Tyson-Hartley@users.noreply.github.com>
+Date:   Fri Mar 17 16:18:03 2023 -0600
+
+    Made BarcodeScannerObserverStubWork
+
+commit dec207a296f67d8f7cfdce28bfec3f5b21b76d12
+Author: tylernsocial <tylernsocial@gmail.com>
+Date:   Fri Mar 17 15:39:54 2023 -0600
+
+    fixed tests on PrintReceiptTest.java
+
+commit 9dd87dd368b0bc7c97deef145810c5a439a67c52
+Author: Tyson-Hartley <127632992+Tyson-Hartley@users.noreply.github.com>
+Date:   Fri Mar 17 15:02:09 2023 -0600
+
+    Learning
+
+commit 20dcec78d06cd797138aed0c3a6c2724295bdf90
+Author: Tyson-Hartley <127632992+Tyson-Hartley@users.noreply.github.com>
+Date:   Fri Mar 17 14:47:53 2023 -0600
+
+    WIP Making Stubs For Barcode and Scale Observer
+
+commit 0af0e8a811b295678bc1a7812c6a9514a5558675
+Author: tylernsocial <tylernsocial@gmail.com>
+Date:   Fri Mar 17 14:40:51 2023 -0600
+
+    tests added for takeReceipt method.
+
+commit c274e586dee59b36fe49ca00666f840a78d10494
+Author: Angeline Tran <angelinenhanaitran@gmail.com>
+Date:   Fri Mar 17 14:10:49 2023 -0600
+
+    Created a BillSlotObserverStub and added it to PayWithCash
+
+commit b0239ab9aeeff3946fcbb95013dbb83ee138a9a6
+Merge: 66983ab be324bb
+Author: Tyson-Hartley <127632992+Tyson-Hartley@users.noreply.github.com>
+Date:   Fri Mar 17 13:00:48 2023 -0600
+
+    Merge branch 'MachineLockStates' into AddItemByScanner
+
+commit 66983ab7c052ac6fb85e534e4ba871446b3b754b
+Author: Tyson-Hartley <127632992+Tyson-Hartley@users.noreply.github.com>
+Date:   Fri Mar 17 12:58:06 2023 -0600
+
+    Added Scale Responce
+
+commit 0de2820c66cfc5e28c179b18010d0f87971337c1
+Author: Tyson-Hartley <127632992+Tyson-Hartley@users.noreply.github.com>
+Date:   Fri Mar 17 12:56:45 2023 -0600
+
+    Added Constructor For SofwareLogic
+
+commit be324bb963e8a842ce04e03243e12033771d468f
+Author: Tyson-Hartley <127632992+Tyson-Hartley@users.noreply.github.com>
+Date:   Fri Mar 17 12:53:37 2023 -0600
+
+    Added LockStatesToMachine
+
+commit 9aba7b2a5be6f2f1448f9014fd152ba7d950e5c2
+Author: Tyson-Hartley <127632992+Tyson-Hartley@users.noreply.github.com>
+Date:   Fri Mar 17 12:20:39 2023 -0600
+
+    Removed AddItemByScanning, and AddItem Classes
+
+commit 4fec89807a2862f72914413d249a97e9dbbd3d13
+Author: Tyson-Hartley <127632992+Tyson-Hartley@users.noreply.github.com>
+Date:   Fri Mar 17 12:19:29 2023 -0600
+
+    Moved AddItem and AddItemByScanner Into SelfCheckoutMachineLogic
+
+commit 3960c9524a42416389304a0d573af149475f0848
+Merge: 53e0012 c512b53
+Author: Tyson-Hartley <127632992+Tyson-Hartley@users.noreply.github.com>
+Date:   Thu Mar 16 21:46:54 2023 -0600
+
+    Merge pull request #3 from angelinet1/AddItemByScanner
+    
+    Changed Bill . java to TransactionRecipt . java
+
+commit c512b53066e05d00486819863ce7ca277b13d27b
+Author: Tyson-Hartley <127632992+Tyson-Hartley@users.noreply.github.com>
+Date:   Thu Mar 16 21:46:31 2023 -0600
+
+    Changed Bill . java to TransactionRecipt . java
+
+commit 53e0012ab7231d68633452285a320ccb7ef81a0f
+Merge: 2bd65c6 ba7cf42
+Author: Tyson-Hartley <127632992+Tyson-Hartley@users.noreply.github.com>
+Date:   Thu Mar 16 21:43:47 2023 -0600
+
+    Merge pull request #2 from angelinet1/AddItemByScanner
+    
+    Machine Locked Variabless and Functions
+
+commit ba7cf42a0669d1395735d989bdf9a67f2dbd1f75
+Author: Tyson-Hartley <127632992+Tyson-Hartley@users.noreply.github.com>
+Date:   Thu Mar 16 21:42:16 2023 -0600
+
+    Added getCurrentBill to AddItem
+
+commit 70b595dffe15c1062baa0f293c65cba9b4609ee3
+Author: Angeline Tran <angelinenhanaitran@gmail.com>
+Date:   Thu Mar 16 20:52:49 2023 -0600
+
+    Created an observer for paywithcash
+
+commit d0e2930bdfac3dc97746314ae79b68c1f215984f
+Author: Tyson-Hartley <127632992+Tyson-Hartley@users.noreply.github.com>
+Date:   Thu Mar 16 20:44:10 2023 -0600
+
+    Machine Locked Variabless and Functions
+    
+    Added variables and functions for when the machine is locked and waiting for imput, as well functions for setting the locked state and simulating a user placing an item on scale when prompted
+
+commit 9afff55dfd30a54df2c85ec0eb6af37be2513162
+Author: Angeline Tran <angelinenhanaitran@gmail.com>
+Date:   Wed Mar 15 23:44:31 2023 -0600
+
+    Added methods to PayWithCash
+
+commit 2bd65c6e75a370f920e436f02593c5568416ebb3
+Merge: ba088e8 c6ec280
+Author: Angeline Tran <angelinenhanaitran@gmail.com>
+Date:   Wed Mar 15 19:26:12 2023 -0600
+
+    Merge branch 'AddItemByScanner'
+
+commit ba088e874351b0a83ad0f288dc157a3d78b728b0
+Author: anna-jeongah <annajlee28@gmail.com>
+Date:   Wed Mar 15 13:48:03 2023 -0600
+
+    Registered controller class as a listener to the printer in the
+    constructor. Added printBillRecord method.
+
+commit 5d29cc073ca40d280b7e272c94b6b26436d531d2
+Merge: fb25e73 aea7c1c
+Author: anna-jeongah <annajlee28@gmail.com>
+Date:   Wed Mar 15 12:10:16 2023 -0600
+
+    Merge remote-tracking branch 'origin/main' into PrintReceiptController
+
+commit c6ec2809e2c1621527f1023fb13294f73981cd4e
+Author: Tyson-Hartley <127632992+Tyson-Hartley@users.noreply.github.com>
+Date:   Wed Mar 15 10:48:27 2023 -0600
+
+    Added Junit4 to build Path
+
+commit e5f7aee73f22113491a43909b4ce57512bcdb82b
+Merge: 2e25c16 ea74c62
+Author: Tyson-Hartley <127632992+Tyson-Hartley@users.noreply.github.com>
+Date:   Wed Mar 15 10:47:24 2023 -0600
+
+    Merge branch 'AddItemByScanner' of https://github.com/angelinet1/SENG300W23 into AddItemByScanner
+
+commit 2e25c16f1a7499047ac9fba6b5f00caebaf1b3bc
+Author: Tyson-Hartley <127632992+Tyson-Hartley@users.noreply.github.com>
+Date:   Wed Mar 15 10:47:05 2023 -0600
+
+    V0.1: Intial Semi Complete Version
+    
+    While I don't believe it has everything, I do think that this has most of the main characteristics
+
+commit ea74c62a0b431d0b6ac79fff57d1f7be2bd0b0a4
+Author: dianedoan <dianedd419@hotmail.com>
+Date:   Wed Mar 15 10:29:51 2023 -0600
+
+    added test class
+
+commit aea7c1ca0cffd80846cb23d54de2e2add26771db
+Author: angeline.tran <angeline.tran@ucalgary,ca>
+Date:   Tue Mar 14 21:48:08 2023 -0600
+
+    Added implementations into PayWithCash and PrintReceipt
+
+commit 331e2e064ad1153e45f962e20d1e1f9cae2dd45e
+Merge: a89dc31 db32589
+Author: angeline.tran <angeline.tran@ucalgary,ca>
+Date:   Tue Mar 14 21:34:01 2023 -0600
+
+    Merge remote-tracking branch 'origin/AddItemByScanner' into main
+
+commit a89dc312b1355a80f85e9fda72f33ae7fbe4c07e
+Author: angeline.tran <angeline.tran@ucalgary,ca>
+Date:   Tue Mar 14 21:29:19 2023 -0600
+
+    Merge
+
+commit db325891b5f1ae66b2487841ddc734bf7edef6fc
+Author: Tyson-Hartley <127632992+Tyson-Hartley@users.noreply.github.com>
+Date:   Tue Mar 14 15:31:47 2023 -0600
+
+    Update README.md
+
+commit a4f86f264bb47d86ea9c4b081229ba6b585fc050
+Author: Tyson-Hartley <127632992+Tyson-Hartley@users.noreply.github.com>
+Date:   Tue Mar 14 15:30:45 2023 -0600
+
+    Basic Function Signatures
+    
+    Added Some of the basic function signatures that need to be implemented
+
+commit 31993a16cd4d30a0ffef12f7b73c0394bd536fb3
+Author: Tyson-Hartley <127632992+Tyson-Hartley@users.noreply.github.com>
+Date:   Tue Mar 14 15:11:55 2023 -0600
+
+    Added Bill Class
+
+commit e61ad087563304133eafe9be22777a62002c3068
+Author: Tyson-Hartley <127632992+Tyson-Hartley@users.noreply.github.com>
+Date:   Tue Mar 14 14:43:58 2023 -0600
+
+    Changed BuildPaths
+    
+    Added Hardware to build path of software and both software and hardware to build path of test
+
+commit fb25e7311b64f3934190d2f26ecaf02f469836af
+Merge: f0bce1f 7fa64db
+Author: anna-jeongah <annajlee28@gmail.com>
+Date:   Tue Mar 14 10:51:35 2023 -0600
+
+    Merge branch 'main' into PrintReceiptController
+
+commit f0bce1f84a5f870685bac3bb1bb7f9c68287ed1b
+Author: anna-jeongah <annajlee28@gmail.com>
+Date:   Tue Mar 14 10:47:44 2023 -0600
+
+    Added observer methods to PrintReceipt class. Added new method called
+    takeReceipt to PrintReceipt class.
+
+commit 7fa64dbbb8fa555d0a8e8a9dc91de215e17d4569
+Author: angeline.tran <angeline.tran@ucalgary,ca>
+Date:   Mon Mar 13 21:14:07 2023 -0600
+
+    Updated files
+
+commit 75464aa583affcb0c086941c41a6e37b1896e890
+Merge: 819eee8 671cc05
+Author: anna-jeongah <annajlee28@gmail.com>
+Date:   Mon Mar 13 20:58:02 2023 -0600
+
+    Merge branch 'main' into PrintReceiptController
+
+commit 819eee8aaf0692fd82bfdd5484c7e4a6ddecde50
+Author: anna-jeongah <annajlee28@gmail.com>
+Date:   Mon Mar 13 20:46:59 2023 -0600
+
+    Added constructor
+
+commit 671cc05561255e26173a6c5d2f54559ed6245885
+Author: angeline.tran <angeline.tran@ucalgary,ca>
+Date:   Mon Mar 13 20:32:02 2023 -0600
+
+    Merge remote-tracking branch 'origin/anna' into main
+
+commit 65c6f680b19407a1bdf45c5d318e8c3a1f9ea912
+Merge: feed9cb 0c3a0d4
+Author: angeline.tran <angeline.tran@ucalgary,ca>
+Date:   Mon Mar 13 20:31:23 2023 -0600
+
+    Merge remote-tracking branch 'origin/anna' into main
+
+commit feed9cbdceb851b95b09ce7638a3408efc8808aa
+Author: angeline.tran <angeline.tran@ucalgary,ca>
+Date:   Sun Mar 12 22:01:43 2023 -0600
+
+    Added software files
+
+commit 0c3a0d45f5978e815831f51827db5182f3d2e2b5
+Merge: 9deb75f d9eedd9
+Author: anna-jeongah <annajlee28@gmail.com>
+Date:   Sat Mar 11 21:57:37 2023 -0700
+
+    Merge remote-tracking branch 'origin/main' into anna
+
+commit 9deb75f4b4e4de2f8f2d2f1acb557a2d0c9ca4ac
+Author: anna-jeongah <annajlee28@gmail.com>
+Date:   Sat Mar 11 21:42:39 2023 -0700
+
+    Added rest of files in eclipse project
+
+commit d9eedd9d3ba00b47497093d541a7e514bff9e08f
+Merge: 2651713 d20a2f8
+Author: angeline.tran <angeline.tran@ucalgary,ca>
+Date:   Sat Mar 11 21:39:09 2023 -0700
+
+    Merge branch 'anna' of https://github.com/angelinet1/SENG300W23
+
+commit d20a2f86be47302a3ac33aae691ed492f26862f6
+Author: anna-jeongah <annajlee28@gmail.com>
+Date:   Sat Mar 11 21:32:00 2023 -0700
+
+    Added software and software.test projects
+
+commit 26517133a82d10af771b5528268d13a0909ada9b
+Author: Tyson-Hartley <127632992+Tyson-Hartley@users.noreply.github.com>
+Date:   Sat Mar 11 21:09:37 2023 -0700
+
+    Delete Untitled 3
+
+commit d231503a23cc52910d42b55510bf7fd9df606a7a
+Author: Tyson-Hartley <127632992+Tyson-Hartley@users.noreply.github.com>
+Date:   Sat Mar 11 21:08:34 2023 -0700
+
+    Create Untitled 3
+
+commit 158a5215d4c4d1bd3b1d38ca361a7368e7f66c15
+Author: angeline.tran <angeline.tran@ucalgary,ca>
+Date:   Sat Mar 11 20:46:25 2023 -0700
+
+    Delete
+
+commit ac281ce4da02d79ed841a7f410b396c510ea1ab0
+Author: angeline.tran <angeline.tran@ucalgary,ca>
+Date:   Sat Mar 11 20:46:08 2023 -0700
+
+    Delete
+
+commit f9a171227d90e2806bd90adc1dc26a6bfd39a8c3
+Author: angeline.tran <angeline.tran@ucalgary,ca>
+Date:   Sat Mar 11 20:12:26 2023 -0700
+
+    Delete
+
+commit cf4ee31a7cd821e7e897e964907d288763811799
+Author: angeline.tran <angeline.tran@ucalgary,ca>
+Date:   Sat Mar 11 19:53:32 2023 -0700
+
+    Initialize source code hardware folder
+
+commit d47accc47804622a7ef54b4b27ab35b32c5f7092
+Author: Angeline Tran <72670634+angelinet1@users.noreply.github.com>
+Date:   Sat Mar 11 13:22:29 2023 -0700
+
+    Initial commit

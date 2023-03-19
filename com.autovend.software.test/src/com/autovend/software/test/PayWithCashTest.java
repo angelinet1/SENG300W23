@@ -24,6 +24,8 @@ import com.autovend.Bill;
 import com.autovend.Numeral;
 import com.autovend.devices.BillSlot;
 import com.autovend.devices.BillValidator;
+import com.autovend.devices.DisabledException;
+import com.autovend.devices.OverloadException;
 import com.autovend.devices.SelfCheckoutStation;
 import com.autovend.external.ProductDatabases;
 import com.autovend.products.BarcodedProduct;
@@ -46,6 +48,7 @@ public class PayWithCashTest {
 	private SelfCheckoutStation scs; 
 	private BillValidator billValidator;
 	private BillSlot billSlot;
+	public Bill bill;
 	public BigDecimal remainder;
 	public BigDecimal change;
 	public BigDecimal total;
@@ -65,6 +68,7 @@ public class PayWithCashTest {
 	public void setup() {
 		// create new Bill
 		currency = Currency.getInstance("USD");
+		bill = new Bill(5, currency);
 		denominations = new int[] {5, 10, 15};
 		coinDom = new BigDecimal[] {BigDecimal.valueOf(0.05), BigDecimal.valueOf(0.10),BigDecimal.valueOf(0.25)};
 		billValidator = new BillValidator(currency, denominations);
@@ -128,8 +132,9 @@ public class PayWithCashTest {
      * When a valid bill is inserted
      */
     @Test 
-    public void ValidBillInserted() {
+    public void ValidBillInserted() throws DisabledException, OverloadException {
     	selfCheckout.setTotal(BigDecimal.valueOf(5));
+    	billSlot.accept(bill);
     	listener_1.reactToBillInsertedEvent(billSlot);
     	listener_2.reactToValidBillDetectedEvent(billValidator, currency, 10);
     	selfCheckout.payWithCash();
@@ -140,8 +145,9 @@ public class PayWithCashTest {
      * When an invalid bill is inserted
      */
     @Test
-    public void InvalidBillInserted() {
+    public void InvalidBillInserted() throws DisabledException, OverloadException {
     	selfCheckout.setTotal(BigDecimal.valueOf(5));
+    	billSlot.accept(bill);
     	listener_1.reactToBillInsertedEvent(billSlot);
     	listener_2.reactToInvalidBillDetectedEvent(billValidator);
     	selfCheckout.payWithCash();

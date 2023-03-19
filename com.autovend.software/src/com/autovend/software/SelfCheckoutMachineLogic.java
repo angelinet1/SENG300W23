@@ -51,6 +51,7 @@ public class SelfCheckoutMachineLogic{
 	public ElectronicScaleObserverStub esObserver = new ElectronicScaleObserverStub(this);
 	public BarcodeScannerObserverStub bsObserver = new BarcodeScannerObserverStub(this);
 	public BillSlotObserverStub listener_1 = new BillSlotObserverStub(this);
+	public BillValidatorObserverStub listener_2 = new BillValidatorObserverStub(this);
 	
 	public PrintReceipt printReceipt; //This is the controller for printing the receipt
 	public AttendantIO attendant = new AttendantIO(); //Creating an attendantIO that will receive and store calls to attendant
@@ -272,8 +273,8 @@ public class SelfCheckoutMachineLogic{
     	remainder = total; // initialize remaining amount to pay
     	int compare = remainder.compareTo(BigDecimal.ZERO); // local variable to store comparison
     	while(compare == 1) { // comparison returns 1 if remainder > 0
-    		if(billInsertedEvent) { // if event is true, continue with procedure
-    			if(billValidEvent){
+    		if(listener_1.billInsertedEvent) { // if event is true, continue with procedure
+    			if(listener_2.billValidEvent){
     				int insertedBill = bill.getValue(); // get value of the inserted bill
         		    BigDecimal updateBill = BigDecimal.valueOf(insertedBill); // convert bill to BigDecimal type
         		    remainder = total.subtract(updateBill); // reduces the remaining amount due by value of inserted bill

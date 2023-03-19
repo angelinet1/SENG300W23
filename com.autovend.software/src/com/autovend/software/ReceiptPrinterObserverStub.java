@@ -1,3 +1,6 @@
+/**
+ *  @authors: Angeline Tran (301369846), Tyson Hartley (30117135), Jeongah Lee (30137463), Tyler Nguyen (30158563), Diane Doan (30052326), Nusyba Shifa (30162709)
+ */
 package com.autovend.software;
 
 import com.autovend.devices.AbstractDevice;
@@ -5,6 +8,9 @@ import com.autovend.devices.ReceiptPrinter;
 import com.autovend.devices.observers.AbstractDeviceObserver;
 import com.autovend.devices.observers.ReceiptPrinterObserver;
 
+/*
+ * Stub class that implements the ReceiptPrinterObserver
+ */
 public class ReceiptPrinterObserverStub implements ReceiptPrinterObserver{
 	
 	private boolean outOfPaper = false;
@@ -17,13 +23,13 @@ public class ReceiptPrinterObserverStub implements ReceiptPrinterObserver{
 	
 	@Override
 	public void reactToEnabledEvent(AbstractDevice<? extends AbstractDeviceObserver> device) {
-		// TODO Auto-generated method stub
+		
 		
 	}
 
 	@Override
 	public void reactToDisabledEvent(AbstractDevice<? extends AbstractDeviceObserver> device) {
-		// TODO Auto-generated method stub
+		
 		
 	}
 
@@ -44,13 +50,13 @@ public class ReceiptPrinterObserverStub implements ReceiptPrinterObserver{
 
 	@Override
 	public void reactToPaperAddedEvent(ReceiptPrinter printer) {
-		// TODO Auto-generated method stub
+		
 		
 	}
 
 	@Override
 	public void reactToInkAddedEvent(ReceiptPrinter printer) {
-		// TODO Auto-generated method stub
+		
 		
 	}
 	

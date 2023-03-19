@@ -101,5 +101,29 @@ public class AddItemByScannerTest {
 	public void addItemLocked() {
 		machineLogic.setMachineLock(true);
 		machineLogic.addItemPerUnit(bread_product, 5);
+		station.baggingArea.add(SelfCheckoutMachineLogic.getBarcodedUnitFromBarcode(bread_barcode));
+	}
+	
+	/**
+	 * Tests when a scanned item is added and checks if the weight change is correct.
+	 * The item weight is under the weight limit.
+	 */
+	@Test 
+	public void addItemUpdateWeight() throws OverloadException {
+		assertEquals(0, station.baggingArea.getCurrentWeight(), 0);
+		machineLogic.addItemPerUnit(milk_product, 20);
+		station.baggingArea.add(SelfCheckoutMachineLogic.getBarcodedUnitFromBarcode(milk_barcode));
+		assertEquals(20, station.baggingArea.getCurrentWeight(), 0);
+		machineLogic.weightChanged(20);
+	}
+	
+	/**
+	 * Tests when a scanned item is added and checks if the current bill total is correct.
+	 */
+	@Test 
+	public void addItemUpdatePrice()  {
+		machineLogic.addItemPerUnit(milk_product, 20);
+		station.baggingArea.add(SelfCheckoutMachineLogic.getBarcodedUnitFromBarcode(milk_barcode));
+		assertEquals(milk_product.getPrice(), machineLogic.currentBill.getBillBalance());
 	}
 }

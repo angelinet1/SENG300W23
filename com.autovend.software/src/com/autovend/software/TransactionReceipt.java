@@ -70,7 +70,7 @@ public class TransactionReceipt {
 
 	public void addProduct(Product p) {
 		currentBill.add(p);
-		p.getPrice();
+		
 		
 	}
 	
@@ -92,7 +92,7 @@ public class TransactionReceipt {
 	 */
 	public BigDecimal augmentBillBalance(BigDecimal addend) {
 		this.billBalance.add(addend);
-		return billBalance;
+		return this.billBalance;
 	}
 
 	public double getBillExpectedWeight() {

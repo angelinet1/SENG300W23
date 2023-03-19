@@ -131,7 +131,7 @@ public class SelfCheckoutMachineLogic{
 			currentBill.addProduct(p);
 		}
 		
-		currentBill.augmentBillBalance(p.getPrice());
+		currentBill.setBillBalance(currentBill.getBillBalance().add(p.getPrice()));
 		
 		// Update Expected Weight
 		currentBill.augmentExpectedWeight(weight);
@@ -293,7 +293,7 @@ public class SelfCheckoutMachineLogic{
     	//Once the payment is finished, call the signalToPrintReceipt method which will 
     	//run through the process of printing the receipt
     	try {
-			this.signalToPrintReceipt(currentBill);
+			 this.signalToPrintReceipt(currentBill);
 		} catch (Exception e) {
 		}
 	}

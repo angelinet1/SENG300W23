@@ -123,9 +123,11 @@ public class PayWithCashTest {
      */
     @Test
     public void noBillInserted() {
-    	selfCheckout.setTotal(BigDecimal.valueOf(5));
+    	selfCheckout.setTotal(new BigDecimal(5));
+    	BigDecimal initalTotal = selfCheckout.getTotal();
+    	//selfCheckout.setTotal(BigDecimal.valueOf(5));
     	selfCheckout.payWithCash();
-    	assertEquals(BigDecimal.valueOf(5), selfCheckout.getTotal(total));
+    	assertEquals(initalTotal, selfCheckout.getTotal());
     }
     
     /*

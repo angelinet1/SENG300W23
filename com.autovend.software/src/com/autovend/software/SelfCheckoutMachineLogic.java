@@ -117,6 +117,9 @@ public class SelfCheckoutMachineLogic{
 		
 		printReceipt = new PrintReceipt(scStation, this, attendant);
 		
+		this.total = new BigDecimal(-1);
+		
+		
 		
 		
 		this.setMachineLock(false);
@@ -251,7 +254,7 @@ public class SelfCheckoutMachineLogic{
 	/*
 	 * Getter for total
 	 */
-	public BigDecimal getTotal(BigDecimal total) {
+	public BigDecimal getTotal() {
 		return this.total;
 	}
 	
@@ -268,7 +271,7 @@ public class SelfCheckoutMachineLogic{
 	 * Main function for pay with cash
 	 */
 	public void payWithCash(){
-    	this.total = currentBill.getBillBalance(); // get the total purchase value
+    	//this.total = currentBill.getBillBalance(); // get the total purchase value
     	
     	remainder = total; // initialize remaining amount to pay
     	int compare = remainder.compareTo(BigDecimal.ZERO); // local variable to store comparison

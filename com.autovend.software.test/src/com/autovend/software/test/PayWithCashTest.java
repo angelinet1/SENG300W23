@@ -127,7 +127,7 @@ public class PayWithCashTest {
     /*
      * When a valid bill is inserted
      */
-    @Test
+    @Test 
     public void ValidBillInserted() {
     	selfCheckout.setTotal(BigDecimal.valueOf(5));
     	listener_1.reactToBillInsertedEvent(billSlot);

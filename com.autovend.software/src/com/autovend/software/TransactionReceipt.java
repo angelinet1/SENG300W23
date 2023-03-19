@@ -91,8 +91,8 @@ public class TransactionReceipt {
 	 * @return 
 	 */
 	public BigDecimal augmentBillBalance(BigDecimal addend) {
-		this.billBalance.add(addend);
-		return billBalance;
+		this.billBalance = this.billBalance.add(addend);
+		return this.billBalance;
 	}
 
 	public double getBillExpectedWeight() {

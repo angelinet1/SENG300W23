@@ -136,7 +136,7 @@ public class SelfCheckoutMachineLogic{
 		// Update Expected Weight
 		currentBill.augmentExpectedWeight(weight);
 		
-		this.askCustomerToPlaceItemGUI();
+ 		this.askCustomerToPlaceItemGUI();
 		
 		
 		}

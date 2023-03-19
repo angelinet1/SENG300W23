@@ -17,7 +17,7 @@ import org.junit.Test;
 
 import java.util.Currency;
 import java.math.BigDecimal;
-import java.util.Currency;
+
 
 import com.autovend.Barcode;
 import com.autovend.Bill;
@@ -70,6 +70,7 @@ public class PayWithCashTest {
 		billValidator = new BillValidator(currency, denominations);
 		billSlot = new BillSlot(barcodeScannedEvent);
 		TransactionReceipt currentBill = new TransactionReceipt();
+		
 		
 		// create self checkout machine and i/o's
 		scs = new SelfCheckoutStation(currency, denominations , coinDom, 10000, 2);

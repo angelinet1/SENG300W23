@@ -26,6 +26,11 @@ public class BillValidatorObserverStub implements BillValidatorObserver{
 	public boolean billValidEvent = false;
 	public boolean billInvalidEvent = false;
 	public AbstractDevice<? extends AbstractDeviceObserver> device = null;
+	public SelfCheckoutMachineLogic	scMachine;
+	
+	public BillValidatorObserverStub (SelfCheckoutMachineLogic scm) {
+		this.scMachine = scm;
+	}
 
 	@Override
 	public void reactToEnabledEvent(AbstractDevice<? extends AbstractDeviceObserver> device) {
@@ -42,12 +47,12 @@ public class BillValidatorObserverStub implements BillValidatorObserver{
 	@Override
 	public void reactToValidBillDetectedEvent(BillValidator billValidator, Currency currency, int value) {
 		this.billValidator = billValidator;
-		billValidEvent = true;
+		scMachine.billValidEvent = true;
 	}
 
 	@Override
 	public void reactToInvalidBillDetectedEvent(BillValidator billValidator){
 		this.billValidator = billValidator;
-		billInvalidEvent = true;
+		scMachine.illInvalidEvent = true;
 	}
 }

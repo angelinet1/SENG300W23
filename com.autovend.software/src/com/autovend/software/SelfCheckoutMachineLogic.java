@@ -71,6 +71,7 @@ public class SelfCheckoutMachineLogic{
 	private int numberOfLockCodes = 3;
 	public boolean billEjectedEvent;
 	public boolean billRemovedEvent;
+	public boolean illInvalidEvent;
 	
 	public int getReasonForLock() {
 		return reasonForLock;

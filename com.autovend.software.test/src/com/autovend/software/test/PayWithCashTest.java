@@ -80,7 +80,7 @@ public class PayWithCashTest {
 		
 		// create listener objects
 		listener_1 = new BillSlotObserverStub(selfCheckout);
-	    listener_2 = new BillValidatorObserverStub();
+	    listener_2 = new BillValidatorObserverStub(selfCheckout);
 	  
 	    // register listener 1 and 2
         billSlot.register(listener_1);

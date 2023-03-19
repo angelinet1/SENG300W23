@@ -11,7 +11,7 @@ import java.math.BigDecimal;
  */
 public class CashIO {
 
-	BigDecimal change;
+	private BigDecimal change;
 	
 	// Setter
 	public void setChange(BigDecimal change) {

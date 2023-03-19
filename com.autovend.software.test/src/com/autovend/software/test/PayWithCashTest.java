@@ -125,7 +125,6 @@ public class PayWithCashTest {
     public void noBillInserted() {
     	selfCheckout.setTotal(new BigDecimal(5));
     	BigDecimal initalTotal = selfCheckout.getTotal(total);
-    	//selfCheckout.setTotal(BigDecimal.valueOf(5));
     	selfCheckout.payWithCash();
     	assertEquals(initalTotal, selfCheckout.getTotal(total));
     }
@@ -136,11 +135,10 @@ public class PayWithCashTest {
     @Test 
     public void ValidBillInserted() throws DisabledException, OverloadException {
     	selfCheckout.setTotal(BigDecimal.valueOf(5));
-    	billSlot.accept(bill);
     	listener_1.reactToBillInsertedEvent(billSlot);
     	listener_2.reactToValidBillDetectedEvent(billValidator, currency, 10);
     	selfCheckout.payWithCash();
-    	assertEquals(BigDecimal.valueOf(5), selfCheckout.getChange(change));
+    	assertEquals(BigDecimal.valueOf(5), cashIO.getChange());
     }
     
     /*
@@ -149,7 +147,6 @@ public class PayWithCashTest {
     @Test
     public void InvalidBillInserted() throws DisabledException, OverloadException {
     	selfCheckout.setTotal(BigDecimal.valueOf(5));
-    	billSlot.accept(bill);
     	listener_1.reactToBillInsertedEvent(billSlot);
     	listener_2.reactToInvalidBillDetectedEvent(billValidator);
     	selfCheckout.payWithCash();

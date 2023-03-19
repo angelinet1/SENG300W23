@@ -39,9 +39,6 @@ public class SelfCheckoutMachineLogic{
 	public BigDecimal total; // create local variable total
 	public BigDecimal remainder; // create local variable remainder
 	public BigDecimal change; // create local variable change
-	//public BillSlotObserverStub listener_1; // create listener
-	public CashIO cashIO; // create cash i/o
-	public CustomerIO customerIO; // create customer i/o
 	public boolean billInsertedEvent = false;
 	public boolean billValidEvent = false;
 	
@@ -56,7 +53,8 @@ public class SelfCheckoutMachineLogic{
 	public PrintReceipt printReceipt; //This is the controller for printing the receipt
 	public AttendantIO attendant = new AttendantIO(); //Creating an attendantIO that will receive and store calls to attendant
 	public CustomerDisplayIO customerDisplay = new CustomerDisplayIO(); //Creating a display where messages to customers can go
-	
+	public CustomerIO customerIO = new CustomerIO(); // create customer i/o
+	public CashIO cashIO = new CashIO(); // create cash i/o
 	
 	/**Codes for reasons the Machine is Locked
 	 * -1: No Reason
@@ -264,22 +262,12 @@ public class SelfCheckoutMachineLogic{
 	public BigDecimal getChange(BigDecimal change) {
 		return this.change;
 	}
-	
-	/*
-	 * Setter for IO's
-	 */
-	public void setIO(CashIO cashIO, CustomerIO customerIO) {
-		this.cashIO = cashIO;
-		this.customerIO = customerIO;
-	}
-	
+
 	
 	/*
 	 * Main function for pay with cash
 	 */
 	public void payWithCash(){
-    	//this.total = currentBill.getBillBalance(); // get the total purchase value
-    	
     	remainder = total; // initialize remaining amount to pay
     	int compare = remainder.compareTo(BigDecimal.ZERO); // local variable to store comparison
     	while(compare == 1) { // comparison returns 1 if remainder > 0
@@ -304,7 +292,7 @@ public class SelfCheckoutMachineLogic{
 			billInsertedEvent = false;
     	}
     	
-    	this.change = remainder.abs(); // set the change to be an absolute value
+    	change = remainder.abs(); // set the change to be an absolute value
     	cashIO.setChange(change); //set change using cashI/O
     	
     	// Change will then be distributed by BillStorage

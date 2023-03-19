@@ -124,9 +124,9 @@ public class PayWithCashTest {
     @Test
     public void noBillInserted() {
     	selfCheckout.setTotal(new BigDecimal(5));
-    	BigDecimal initalTotal = selfCheckout.getTotal(total);
+    	BigDecimal initialTotal = selfCheckout.getTotal(total);
     	selfCheckout.payWithCash();
-    	assertEquals(initalTotal, selfCheckout.getTotal(total));
+    	assertEquals(initialTotal, selfCheckout.getTotal(total));
     }
     
     /*
@@ -138,7 +138,7 @@ public class PayWithCashTest {
     	listener_1.reactToBillInsertedEvent(billSlot);
     	listener_2.reactToValidBillDetectedEvent(billValidator, currency, 10);
     	selfCheckout.payWithCash();
-    	assertEquals(BigDecimal.valueOf(5), cashIO.getChange());
+    	assertEquals(BigDecimal.valueOf(5), selfCheckout.getChange(change));
     }
     
     /*
@@ -161,6 +161,16 @@ public class PayWithCashTest {
     	selfCheckout.setTotal(BigDecimal.valueOf(10));
     	listener_1.reactToBillInsertedEvent(billSlot);
     	listener_2.reactToValidBillDetectedEvent(billValidator, currency, 10);
+    	selfCheckout.payWithCash();
+    	assertEquals(BigDecimal.ZERO, selfCheckout.getChange(change));
+    }
+    
+    /*
+     * When no items are scanned
+     */
+    @Test
+    public void noScannedItems() {
+    	selfCheckout.setTotal(BigDecimal.ZERO);
     	selfCheckout.payWithCash();
     	assertEquals(BigDecimal.ZERO, selfCheckout.getChange(change));
     }

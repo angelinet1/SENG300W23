@@ -124,6 +124,6 @@ public class AddItemByScannerTest {
 	public void addItemUpdatePrice()  {
 		machineLogic.addItemPerUnit(milk_product, 20);
 		station.baggingArea.add(SelfCheckoutMachineLogic.getBarcodedUnitFromBarcode(milk_barcode));
-		assertEquals(milk_product.getPrice(), machineLogic.currentBill.getBillBalance());
+		assertEquals(milk_product.getPrice(), machineLogic.getCurrentBill().getBillBalance());
 	}
 }

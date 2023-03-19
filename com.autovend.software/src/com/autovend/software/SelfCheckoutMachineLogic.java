@@ -39,7 +39,7 @@ public class SelfCheckoutMachineLogic{
 	public BigDecimal total; // create local variable total
 	public BigDecimal remainder; // create local variable remainder
 	public BigDecimal change; // create local variable change
-	public BillSlotObserverStub listener_1; // create listener
+	//public BillSlotObserverStub listener_1; // create listener
 	public CashIO cashIO; // create cash i/o
 	public CustomerIO customerIO; // create customer i/o
 	public boolean billInsertedEvent = false;
@@ -50,6 +50,7 @@ public class SelfCheckoutMachineLogic{
 	
 	public ElectronicScaleObserverStub esObserver = new ElectronicScaleObserverStub(this);
 	public BarcodeScannerObserverStub bsObserver = new BarcodeScannerObserverStub(this);
+	public BillSlotObserverStub listener_1 = new BillSlotObserverStub();
 	
 	public PrintReceipt printReceipt; //This is the controller for printing the receipt
 	public AttendantIO attendant = new AttendantIO(); //Creating an attendantIO that will receive and store calls to attendant
@@ -107,6 +108,8 @@ public class SelfCheckoutMachineLogic{
 		scStation.handheldScanner.register(bsObserver);
 		scStation.handheldScanner.disable();
 		scStation.handheldScanner.enable();
+		
+		scStation.billInput.register(listener_1);
 		
 		printReceipt = new PrintReceipt(scStation, this, attendant);
 		

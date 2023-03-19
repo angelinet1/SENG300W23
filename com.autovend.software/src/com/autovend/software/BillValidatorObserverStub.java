@@ -11,6 +11,7 @@ package com.autovend.software;
 
 import java.util.Currency;
 
+import com.autovend.Bill;
 import com.autovend.devices.AbstractDevice;
 import com.autovend.devices.BillValidator;
 import com.autovend.devices.observers.AbstractDeviceObserver;
@@ -48,6 +49,7 @@ public class BillValidatorObserverStub implements BillValidatorObserver{
 	public void reactToValidBillDetectedEvent(BillValidator billValidator, Currency currency, int value) {
 		this.billValidator = billValidator;
 		scMachine.billValidEvent = true;
+		scMachine.bill = new Bill(value, currency);
 	}
 
 	@Override

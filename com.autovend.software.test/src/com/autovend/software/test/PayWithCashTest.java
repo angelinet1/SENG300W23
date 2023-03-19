@@ -149,6 +149,18 @@ public class PayWithCashTest {
     }
     
     /*
+     * Test when there's no change
+     */
+    @Test
+    public void noChange() {
+    	selfCheckout.setTotal(BigDecimal.valueOf(10));
+    	listener_1.reactToBillInsertedEvent(billSlot);
+    	listener_2.reactToValidBillDetectedEvent(billValidator, currency, 10);
+    	selfCheckout.payWithCash();
+    	assertEquals(BigDecimal.ZERO, selfCheckout.getChange());
+    }
+    
+    /*
      * Test Customer IO
      */
     @Test

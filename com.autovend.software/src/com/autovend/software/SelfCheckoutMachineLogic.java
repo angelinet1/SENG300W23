@@ -254,7 +254,7 @@ public class SelfCheckoutMachineLogic{
 	/*
 	 * Getter for total
 	 */
-	public BigDecimal getTotal() {
+	public BigDecimal getTotal(BigDecimal total) {
 		return this.total;
 	}
 	

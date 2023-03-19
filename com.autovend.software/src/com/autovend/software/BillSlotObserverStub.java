@@ -17,11 +17,16 @@ import com.autovend.devices.observers.BillSlotObserver;
 public class BillSlotObserverStub implements BillSlotObserver{
 
 	public BillSlot billSlot; 
+	public SelfCheckoutMachineLogic scMachine;
 	
 	public boolean billInsertedEvent = false;
     public boolean billEjectedEvent = false;
     public boolean billRemovedEvent = false;
     public AbstractDevice<? extends AbstractDeviceObserver> device = null;
+    
+    public BillSlotObserverStub (SelfCheckoutMachineLogic scMachine) {
+    	this.scMachine = scMachine;
+    }
 	
 	@Override
 	public void reactToEnabledEvent(AbstractDevice<? extends AbstractDeviceObserver> device) {
@@ -37,19 +42,19 @@ public class BillSlotObserverStub implements BillSlotObserver{
 
 	@Override
 	public void reactToBillInsertedEvent(BillSlot slot) {
-		billInsertedEvent = true;
+		scMachine.billInsertedEvent = true;
 		
 	}
 
 	@Override
 	public void reactToBillEjectedEvent(BillSlot slot) {
-		billEjectedEvent = true;
+		scMachine.billEjectedEvent = true;
 		
 	}
 
 	@Override
 	public void reactToBillRemovedEvent(BillSlot slot) {
-		billRemovedEvent = true;
+		scMachine.billRemovedEvent = true;
 		
 	}
 	

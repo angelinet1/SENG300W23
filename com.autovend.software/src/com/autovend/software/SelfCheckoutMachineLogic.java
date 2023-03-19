@@ -50,7 +50,7 @@ public class SelfCheckoutMachineLogic{
 	
 	public ElectronicScaleObserverStub esObserver = new ElectronicScaleObserverStub(this);
 	public BarcodeScannerObserverStub bsObserver = new BarcodeScannerObserverStub(this);
-	public BillSlotObserverStub listener_1 = new BillSlotObserverStub();
+	public BillSlotObserverStub listener_1 = new BillSlotObserverStub(this);
 	
 	public PrintReceipt printReceipt; //This is the controller for printing the receipt
 	public AttendantIO attendant = new AttendantIO(); //Creating an attendantIO that will receive and store calls to attendant
@@ -69,6 +69,8 @@ public class SelfCheckoutMachineLogic{
 
 	private int[] listOfLockCodes;
 	private int numberOfLockCodes = 3;
+	public boolean billEjectedEvent;
+	public boolean billRemovedEvent;
 	
 	public int getReasonForLock() {
 		return reasonForLock;
@@ -248,14 +250,14 @@ public class SelfCheckoutMachineLogic{
 	 * Getter for total
 	 */
 	public BigDecimal getTotal(BigDecimal total) {
-		return this.total = total;
+		return this.total;
 	}
 	
 	/*
 	 * Getter for change
 	 */
 	public BigDecimal getChange(BigDecimal change) {
-		return this.change = change;
+		return this.change;
 	}
 	
 	
@@ -264,7 +266,7 @@ public class SelfCheckoutMachineLogic{
 	 * Main function for pay with cash
 	 */
 	public void payWithCash(){
-    	total = currentBill.getBillBalance(); // get the total purchase value
+    	this.total = currentBill.getBillBalance(); // get the total purchase value
     	
     	remainder = total; // initialize remaining amount to pay
     	int compare = remainder.compareTo(BigDecimal.ZERO); // local variable to store comparison
@@ -290,7 +292,7 @@ public class SelfCheckoutMachineLogic{
 			billInsertedEvent = false;
     	}
     	
-    	change = remainder.abs(); // set the change to be an absolute value
+    	this.change = remainder.abs(); // set the change to be an absolute value
     	cashIO.setChange(change); //set change using cashI/O
     	
     	// Change will then be distributed by BillStorage

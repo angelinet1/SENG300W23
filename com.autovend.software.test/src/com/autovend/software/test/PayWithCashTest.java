@@ -79,7 +79,7 @@ public class PayWithCashTest {
 		customerIO = new CustomerIO();
 		
 		// create listener objects
-		listener_1 = new BillSlotObserverStub();
+		listener_1 = new BillSlotObserverStub(selfCheckout);
 	    listener_2 = new BillValidatorObserverStub();
 	  
 	    // register listener 1 and 2

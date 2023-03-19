@@ -17,7 +17,7 @@ import org.junit.Test;
 
 import java.util.Currency;
 import java.math.BigDecimal;
-import java.util.Currency;
+
 
 import com.autovend.Barcode;
 import com.autovend.Bill;

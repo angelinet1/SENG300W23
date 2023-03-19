@@ -274,7 +274,13 @@ public class SelfCheckoutMachineLogic{
     	cashIO.setChange(change); //set change using cashI/O
     	
     	// Change will then be distributed by BillStorage
-    	// Move on to Receipt Printer
+    	
+    	//Once the payment is finished, call the signalToPrintReceipt method which will 
+    	//run through the process of printing the receipt
+    	try {
+			this.signalToPrintReceipt(currentBill);
+		} catch (Exception e) {
+		}
 	}
 	
 	/**
@@ -301,7 +307,6 @@ public class SelfCheckoutMachineLogic{
 		customerDisplay.informCustomer("Your session is complete. Thank you for shopping with us.");
 		this.currentBill = null; //Null the current bill since the customer's session is over
 		
-		//TEST MERGE
 	}
 
 

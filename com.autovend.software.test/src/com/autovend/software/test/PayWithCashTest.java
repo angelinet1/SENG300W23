@@ -20,21 +20,21 @@ import java.math.BigDecimal;
 
 
 import com.autovend.Barcode;
+import com.autovend.Bill;
 import com.autovend.Numeral;
 import com.autovend.devices.BillSlot;
 import com.autovend.devices.BillValidator;
 import com.autovend.devices.SelfCheckoutStation;
 import com.autovend.external.ProductDatabases;
 import com.autovend.products.BarcodedProduct;
+import com.autovend.products.Product;
 import com.autovend.software.BillSlotObserverStub;
 import com.autovend.software.BillValidatorObserverStub;
 import com.autovend.software.CashIO;
 import com.autovend.software.CustomerIO;
 import com.autovend.software.SelfCheckoutMachineLogic;
+import com.autovend.software.TransactionReceipt;
 
-/*
- * Test case for use case pay with cash
- */
 public class PayWithCashTest {
 
 	public BillSlotObserverStub listener_1; // listener from stub
@@ -69,6 +69,8 @@ public class PayWithCashTest {
 		coinDom = new BigDecimal[] {BigDecimal.valueOf(0.05), BigDecimal.valueOf(0.10),BigDecimal.valueOf(0.25)};
 		billValidator = new BillValidator(currency, denominations);
 		billSlot = new BillSlot(barcodeScannedEvent);
+		TransactionReceipt currentBill = new TransactionReceipt();
+		
 		
 		// create self checkout machine and i/o's
 		scs = new SelfCheckoutStation(currency, denominations , coinDom, 10000, 2);
@@ -119,7 +121,7 @@ public class PayWithCashTest {
     public void noBillInserted() {
     	selfCheckout.setTotal(BigDecimal.valueOf(5));
     	selfCheckout.payWithCash();
-    	assertEquals(BigDecimal.valueOf(5), selfCheckout.getTotal(total));
+    	assertEquals(BigDecimal.valueOf(5), selfCheckout.getTotal());
     }
     
     /*
@@ -131,7 +133,7 @@ public class PayWithCashTest {
     	listener_1.reactToBillInsertedEvent(billSlot);
     	listener_2.reactToValidBillDetectedEvent(billValidator, currency, 10);
     	selfCheckout.payWithCash();
-    	assertEquals(BigDecimal.valueOf(5), selfCheckout.getChange(change));
+    	assertEquals(BigDecimal.valueOf(5), selfCheckout.getChange());
     }
     
     /*
@@ -143,7 +145,7 @@ public class PayWithCashTest {
     	listener_1.reactToBillInsertedEvent(billSlot);
     	listener_2.reactToInvalidBillDetectedEvent(billValidator);
     	selfCheckout.payWithCash();
-    	assertEquals(BigDecimal.valueOf(5), selfCheckout.getChange(change));
+    	assertEquals(BigDecimal.valueOf(5), selfCheckout.getChange());
     }
     
     /*
@@ -160,7 +162,7 @@ public class PayWithCashTest {
      */
     @Test
     public void CashNotified() {
-    	selfCheckout.getChange(change);
+    	selfCheckout.getChange();
     }
     
     

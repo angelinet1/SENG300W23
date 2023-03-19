@@ -244,14 +244,14 @@ public class SelfCheckoutMachineLogic{
 	/*
 	 * Getter for total
 	 */
-	public BigDecimal getTotal() {
+	public BigDecimal getTotal(BigDecimal total) {
 		return this.total = total;
 	}
 	
 	/*
 	 * Getter for change
 	 */
-	public BigDecimal getChange() {
+	public BigDecimal getChange(BigDecimal change) {
 		return this.change = change;
 	}
 	

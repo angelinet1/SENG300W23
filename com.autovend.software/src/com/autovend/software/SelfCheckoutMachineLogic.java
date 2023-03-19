@@ -62,7 +62,7 @@ public class SelfCheckoutMachineLogic{
 	public SelfCheckoutMachineLogic(SelfCheckoutStation scStation) {
 		listOfLockCodes = new int[numberOfLockCodes];
 		for(int i = 0; i < this.numberOfLockCodes; i++) {
-			listOfLockCodes[i] = i-1;
+			 listOfLockCodes[i] = i-1;
 		}
 		
 		scStation.baggingArea.register(esObserver);

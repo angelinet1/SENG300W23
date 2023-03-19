@@ -21,9 +21,11 @@ import java.util.Currency;
 
 import com.autovend.Barcode;
 import com.autovend.Bill;
+import com.autovend.Numeral;
 import com.autovend.devices.BillSlot;
 import com.autovend.devices.BillValidator;
 import com.autovend.devices.SelfCheckoutStation;
+import com.autovend.external.ProductDatabases;
 import com.autovend.products.BarcodedProduct;
 import com.autovend.products.Product;
 import com.autovend.software.BillSlotObserverStub;
@@ -54,7 +56,10 @@ public class PayWithCashTest {
 	public boolean billValidEvent = false;
 	public boolean billInsertedEvent = false;
 	public boolean barcodeScannedEvent = false;
-	
+	public Barcode milk_barcode;
+	public Barcode bread_barcode;
+	public BarcodedProduct milk_product;
+	public BarcodedProduct bread_product;
 	
 	@Before
 	public void setup() {
@@ -83,6 +88,17 @@ public class PayWithCashTest {
         // disable and enable BillValidator to register listeners with device
         billSlot.disable();
         billSlot.enable();
+        
+        milk_barcode = new Barcode(new Numeral[] {Numeral.zero});
+		bread_barcode = new Barcode(new Numeral[] {Numeral.one});
+		
+		milk_product = new BarcodedProduct(milk_barcode,"2% Milk", BigDecimal.valueOf(5), 20);
+		bread_product = new BarcodedProduct(bread_barcode,"White Bread", BigDecimal.valueOf(3), 5);
+		
+		ProductDatabases.BARCODED_PRODUCT_DATABASE.put(milk_barcode, milk_product);
+		ProductDatabases.BARCODED_PRODUCT_DATABASE.put(bread_barcode, bread_product);
+		
+		selfCheckout.addItemPerUnit(bread_product, 5);
 	}
 	
 	/*

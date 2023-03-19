@@ -110,6 +110,8 @@ public class SelfCheckoutMachineLogic{
 		
 		printReceipt = new PrintReceipt(scStation, this, attendant);
 		
+		
+		
 		this.setMachineLock(false);
 	}
 

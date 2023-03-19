@@ -75,7 +75,7 @@ public class TransactionReceipt {
 	}
 	
 	public BigDecimal getBillBalance() {
-		return billBalance;
+		return this.billBalance;
 	}
 
 	public void setBillBalance(BigDecimal billBalance) {

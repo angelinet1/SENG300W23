@@ -66,6 +66,7 @@ public class PayWithCashTest {
 		billSlot = new BillSlot(barcodeScannedEvent);
 		TransactionReceipt currentBill = new TransactionReceipt();
 		
+		
 		// create self checkout machine and i/o's
 		scs = new SelfCheckoutStation(currency, denominations , coinDom, 10000, 2);
 		selfCheckout = new SelfCheckoutMachineLogic(scs);

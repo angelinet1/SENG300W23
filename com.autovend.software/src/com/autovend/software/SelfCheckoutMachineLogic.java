@@ -45,8 +45,8 @@ public class SelfCheckoutMachineLogic{
 	public boolean billInsertedEvent = false;
 	public boolean billValidEvent = false;
 	
-	TransactionReceipt currentBill;
-	public  boolean machineLocked = false;
+	public TransactionReceipt currentBill;
+	public boolean machineLocked = false;
 	
 	public ElectronicScaleObserverStub esObserver = new ElectronicScaleObserverStub(this);
 	public BarcodeScannerObserverStub bsObserver = new BarcodeScannerObserverStub(this);
@@ -247,14 +247,14 @@ public class SelfCheckoutMachineLogic{
 	/*
 	 * Getter for total
 	 */
-	public BigDecimal getTotal() {
+	public BigDecimal getTotal(BigDecimal total) {
 		return this.total = total;
 	}
 	
 	/*
 	 * Getter for change
 	 */
-	public BigDecimal getChange() {
+	public BigDecimal getChange(BigDecimal change) {
 		return this.change = change;
 	}
 	
@@ -269,7 +269,7 @@ public class SelfCheckoutMachineLogic{
     	remainder = total; // initialize remaining amount to pay
     	int compare = remainder.compareTo(BigDecimal.ZERO); // local variable to store comparison
     	while(compare == 1) { // comparison returns 1 if remainder > 0
-    		if(listener_1.getInsertedEvent()) { // if event is true, continue with procedure
+    		if(billInsertedEvent) { // if event is true, continue with procedure
     			if(billValidEvent){
     				int insertedBill = bill.getValue(); // get value of the inserted bill
         		    BigDecimal updateBill = BigDecimal.valueOf(insertedBill); // convert bill to BigDecimal type

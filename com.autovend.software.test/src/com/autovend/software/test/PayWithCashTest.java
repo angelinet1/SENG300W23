@@ -121,7 +121,7 @@ public class PayWithCashTest {
     public void noBillInserted() {
     	selfCheckout.setTotal(BigDecimal.valueOf(5));
     	selfCheckout.payWithCash();
-    	assertEquals(BigDecimal.valueOf(5), selfCheckout.getTotal());
+    	assertEquals(BigDecimal.valueOf(5), selfCheckout.getTotal(total));
     }
     
     /*
@@ -133,7 +133,7 @@ public class PayWithCashTest {
     	listener_1.reactToBillInsertedEvent(billSlot);
     	listener_2.reactToValidBillDetectedEvent(billValidator, currency, 10);
     	selfCheckout.payWithCash();
-    	assertEquals(BigDecimal.valueOf(5), selfCheckout.getChange());
+    	assertEquals(BigDecimal.valueOf(5), selfCheckout.getChange(change));
     }
     
     /*
@@ -145,7 +145,19 @@ public class PayWithCashTest {
     	listener_1.reactToBillInsertedEvent(billSlot);
     	listener_2.reactToInvalidBillDetectedEvent(billValidator);
     	selfCheckout.payWithCash();
-    	assertEquals(BigDecimal.valueOf(5), selfCheckout.getChange());
+    	assertEquals(BigDecimal.valueOf(5), selfCheckout.getChange(change));
+    }
+    
+    /*
+     * Test when there's no change
+     */
+    @Test
+    public void noChange() {
+    	selfCheckout.setTotal(BigDecimal.valueOf(10));
+    	listener_1.reactToBillInsertedEvent(billSlot);
+    	listener_2.reactToValidBillDetectedEvent(billValidator, currency, 10);
+    	selfCheckout.payWithCash();
+    	assertEquals(BigDecimal.ZERO, selfCheckout.getChange(change));
     }
     
     /*
@@ -162,7 +174,7 @@ public class PayWithCashTest {
      */
     @Test
     public void CashNotified() {
-    	selfCheckout.getChange();
+    	selfCheckout.getChange(change);
     }
     
     

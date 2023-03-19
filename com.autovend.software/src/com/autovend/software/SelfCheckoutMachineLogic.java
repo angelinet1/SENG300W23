@@ -296,13 +296,6 @@ public class SelfCheckoutMachineLogic{
     	cashIO.setChange(change); //set change using cashI/O
     	
     	// Change will then be distributed by BillStorage
-    	
-    	//Once the payment is finished, call the signalToPrintReceipt method which will 
-    	//run through the process of printing the receipt
-    	try {
-			this.signalToPrintReceipt(currentBill);
-		} catch (Exception e) {
-		}
 	}
 	
 	/**

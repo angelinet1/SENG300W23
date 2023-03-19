@@ -13,6 +13,9 @@ import java.math.BigDecimal;
 import java.util.Currency;
 
 import com.autovend.Barcode;
+import com.autovend.BarcodedUnit;
+import com.autovend.SellableUnit;
+import com.autovend.devices.BarcodeScanner;
 import com.autovend.devices.BillSlot;
 import com.autovend.devices.EmptyException;
 import com.autovend.devices.OverloadException;
@@ -97,9 +100,9 @@ public class SelfCheckoutMachineLogic{
 			listOfLockCodes[i] = i-1;
 		}
 		
-		scStation.scale.register(esObserver);
-		scStation.scale.disable();
-		scStation.scale.enable();
+		scStation.baggingArea.register(esObserver);
+		scStation.baggingArea.disable();
+		scStation.baggingArea.enable();
 		
 		scStation.handheldScanner.register(bsObserver);
 		scStation.handheldScanner.disable();
@@ -139,6 +142,18 @@ public class SelfCheckoutMachineLogic{
 		}
 	}
 	
+	
+
+
+	public static BarcodedUnit getBarcodedUnitFromBarcode(Barcode barcode) {
+		BarcodedProduct foundProduct = getBarcodedProductFromBarcode(barcode);
+		
+		BarcodedUnit bUnit = new BarcodedUnit(barcode, foundProduct.getExpectedWeight());
+		
+	
+		return bUnit;
+}
+
 
 
 	/**

@@ -88,7 +88,9 @@ public class AddItemByScannerTest {
 	@Test 
 	public void addItem() {
 		machineLogic.addItemPerUnit(milk_product, 20);
+		station.baggingArea.add(SelfCheckoutMachineLogic.getBarcodedUnitFromBarcode(milk_barcode));
 		machineLogic.addItemPerUnit(bread_product, 5);
+		station.baggingArea.add(SelfCheckoutMachineLogic.getBarcodedUnitFromBarcode(bread_barcode));
 		
 	}
 	

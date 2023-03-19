@@ -22,7 +22,6 @@ import com.autovend.software.*;
 public class AddItemByScannerTest {
 	private SelfCheckoutStation station;
 	private SelfCheckoutMachineLogic machineLogic;
-	private TransactionReceipt currentBill;
 	
 	static Barcode milk_barcode;
 	static Barcode bread_barcode;

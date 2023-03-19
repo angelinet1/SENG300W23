@@ -45,8 +45,8 @@ public class SelfCheckoutMachineLogic{
 	public boolean billInsertedEvent = false;
 	public boolean billValidEvent = false;
 	
-	TransactionReceipt currentBill;
-	public  boolean machineLocked = false;
+	public TransactionReceipt currentBill;
+	public boolean machineLocked = false;
 	
 	public ElectronicScaleObserverStub esObserver = new ElectronicScaleObserverStub(this);
 	public BarcodeScannerObserverStub bsObserver = new BarcodeScannerObserverStub(this);

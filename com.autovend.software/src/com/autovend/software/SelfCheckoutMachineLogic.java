@@ -262,6 +262,13 @@ public class SelfCheckoutMachineLogic{
 		return this.change;
 	}
 	
+	/*
+	 * Setter for IO's
+	 */
+	public void setIO(CashIO cashIO, CustomerIO customerIO) {
+		this.cashIO = cashIO;
+		this.customerIO = customerIO;
+	}
 	
 	
 	/*

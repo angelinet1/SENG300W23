@@ -1,3 +1,7 @@
+/**
+ *  @authors: Angeline Tran (301369846), Tyson Hartley (30117135), Jeongah Lee (30137463), Tyler Nguyen (30158563), Diane Doan (30052326), Nusyba Shifa (30162709)
+ */
+
 package com.autovend.software;
 
 import java.math.BigDecimal;
@@ -9,7 +13,7 @@ import com.autovend.products.Product;
  * @author Tyson
  *
  */
-public class TransactionReciept {
+public class TransactionReceipt {
 	
 	/**
 	 * Creates a new Bill of Sale
@@ -23,7 +27,7 @@ public class TransactionReciept {
 
 	double billExpectedWeight;
 	
-	public TransactionReciept() {
+	public TransactionReceipt() {
 		
 		currentBill = new ArrayList<>();
 		this.billBalance = BigDecimal.valueOf(0);
@@ -34,7 +38,7 @@ public class TransactionReciept {
 	 * Creates a new Bill of Sale with the product p in it
 	 */
 	
-	public TransactionReciept(Product p) {
+	public TransactionReceipt(Product p) {
 		
 		currentBill = new ArrayList<Product>();
 		this.billBalance = BigDecimal.valueOf(0);
@@ -84,9 +88,11 @@ public class TransactionReciept {
 	 * Used to increase or decrease Balance by a Big Decimal
 	 * 
 	 * @param BigDecimal addend
+	 * @return 
 	 */
-	public void augmentBillBalance(BigDecimal addend) {
+	public BigDecimal augmentBillBalance(BigDecimal addend) {
 		this.billBalance.add(addend);
+		return billBalance;
 	}
 
 	public double getBillExpectedWeight() {

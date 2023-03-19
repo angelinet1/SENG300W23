@@ -1,3 +1,15 @@
+/*
+ *  @author: Angeline Tran (301369846),
+ *  @author: Tyson Hartley (30117135), 
+ *  @author: Jeongah Lee (30137463), 
+ *  @author: Tyler Nguyen (30158563), 
+ *  @author: Diane Doan (30052326), 
+ *  @author: Nusyba Shifa (30162709)
+ */
+
+/*
+ * Observer Stub for BarcodeScannerObserver
+ */
 package com.autovend.software;
 
 import com.autovend.Barcode;
@@ -31,8 +43,6 @@ public class BarcodeScannerObserverStub implements BarcodeScannerObserver{
 		this.device = device;
 		
 	}
-
-
 
 	@Override
 	public void reactToBarcodeScannedEvent(BarcodeScanner barcodeScanner, Barcode barcode) {

@@ -44,7 +44,6 @@ public class PayWithCashTest {
 	private SelfCheckoutStation scs; 
 	private BillValidator billValidator;
 	private BillSlot billSlot;
-	public TransactionReceipt items;
 	public BigDecimal remainder;
 	public BigDecimal change;
 	public BigDecimal total;
@@ -65,6 +64,7 @@ public class PayWithCashTest {
 		coinDom = new BigDecimal[] {BigDecimal.valueOf(0.05), BigDecimal.valueOf(0.10),BigDecimal.valueOf(0.25)};
 		billValidator = new BillValidator(currency, denominations);
 		billSlot = new BillSlot(barcodeScannedEvent);
+		TransactionReceipt currentBill = new TransactionReceipt();
 		
 		// create self checkout machine and i/o's
 		scs = new SelfCheckoutStation(currency, denominations , coinDom, 10000, 2);

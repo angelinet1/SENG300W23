@@ -46,7 +46,7 @@ public class PayWithCashTest {
 	private BigDecimal[] coinDom;
 	private SelfCheckoutMachineLogic selfCheckout;
 	private SelfCheckoutStation scs; 
-	private BillValidator billValidator;
+	public BillValidator billValidator;
 	private BillSlot billSlot;
 	public Bill bill;
 	public BigDecimal remainder;
